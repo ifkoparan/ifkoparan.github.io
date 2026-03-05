@@ -256,18 +256,106 @@
       background: rgba(30,30,40,0.9);
       border: 1px solid rgba(255,255,255,0.15);
       color: #fff;
-      padding: 8px 14px;
-      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       cursor: pointer;
       font-size: 12px;
       font-family: inherit;
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
       transition: all 0.2s;
       backdrop-filter: blur(10px);
     }
     #arc-toggle:hover { background: rgba(50,50,65,0.95); }
+
+    /* Surprise button */
+    #surprise-btn {
+      position: fixed;
+      bottom: 112px;
+      right: 20px;
+      z-index: 95;
+      background: rgba(30,30,40,0.9);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      backdrop-filter: blur(10px);
+    }
+    #surprise-btn:hover { background: rgba(50,50,65,0.95); }
+
+    /* Stats button */
+    #stats-btn {
+      position: fixed;
+      bottom: 66px;
+      right: 20px;
+      z-index: 95;
+      background: rgba(30,30,40,0.9);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      backdrop-filter: blur(10px);
+    }
+    #stats-btn:hover { background: rgba(50,50,65,0.95); }
+
+    /* Timeline slider */
+    #timeline-container {
+      position: fixed;
+      top: 60px;
+      left: 370px;
+      right: 20px;
+      z-index: 90;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #timeline-slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    #timeline-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ff4444;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+    #timeline-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ff4444;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
     #arc-toggle .arc-icon {
       width: 16px;
       height: 16px;
@@ -303,13 +391,105 @@
       color: #fff;
     }
 
+    /* Stats panel */
+    #stats { cursor: pointer; transition: opacity 0.2s; }
+    #stats:hover { opacity: 1 !important; }
+    #stats-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    #stats-overlay.show { display: flex; }
+    #stats-panel {
+      background: rgba(20,20,30,0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    #stats-panel h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ff4444;
+      line-height: 1.2;
+    }
+    .stat-card .stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    .stat-section { margin-bottom: 16px; }
+    .stat-section h3 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.7);
+    }
+    .stat-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    .stat-bar-label { min-width: 100px; color: rgba(255,255,255,0.7); }
+    .stat-bar-track {
+      flex: 1;
+      height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .stat-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    .stat-bar-count {
+      min-width: 30px;
+      text-align: right;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+    }
+
     /* Location group popup (multiple videos) */
     .group-list { max-height: 300px; overflow-y: auto; }
     .group-list .video-item { padding: 10px 16px; }
     .group-list .video-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.06); }
 
     @media (max-width: 768px) {
-      #header h1 { font-size: 15px; }
+      #header { padding: 10px 14px; }
+      #header h1 { font-size: 14px; }
+      #stats { display: none; }
+      #lang-toggle { margin-left: 6px; font-size: 11px; }
+      #lang-toggle span { padding: 3px 8px; }
       #sidebar {
         top: auto;
         bottom: 0;
@@ -345,10 +525,30 @@
         bottom: calc(55vh + 8px);
       }
       #arc-toggle {
-        bottom: 12px;
+        bottom: 14px;
         right: 12px;
-        font-size: 11px;
-        padding: 6px 10px;
+        width: 36px;
+        height: 36px;
+      }
+      #surprise-btn {
+        bottom: 98px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      #stats-btn {
+        bottom: 56px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      #timeline-container {
+        top: 50px;
+        left: 12px;
+        right: 12px;
+        padding: 4px 12px 6px;
       }
     }
   </style>
@@ -376,10 +576,18 @@
 <button id="toggle-sidebar" title="Menü">&#9776;</button>
 
 <div id="globeViz"></div>
-<button id="arc-toggle" class="mode-location" title="Yolculuk rotası modu">
+<div id="timeline-container">
+  <input type="range" id="timeline-slider" min="0" max="100" value="100">
+</div>
+<button id="stats-btn" onclick="showStats()" title="İstatistikler">&#128202;</button>
+<button id="surprise-btn" title="Beni Şaşırt">&#127922;</button>
+<button id="arc-toggle" class="mode-location" title="Rota: Lokasyon">
   <span class="arc-icon"></span>
-  <span class="arc-label">Rota: Lokasyon</span>
 </button>
+
+<div id="stats-overlay" onclick="if(event.target===this)closeStats()">
+  <div id="stats-panel"></div>
+</div>
 
 <div id="popup-overlay" onclick="if(event.target===this)closePopup()">
   <div id="popup">
@@ -420,6 +628,17 @@ const i18n = {
     routeAll: 'Rota: Tümü',
     routeLocation: 'Rota: Lokasyon',
     menuTitle: 'Menü',
+    surpriseMe: 'Beni Şaşırt',
+    allVideos: 'Tüm videolar',
+    statsTitle: 'İstatistikler',
+    totalDistance: 'Toplam Mesafe',
+    totalVideos: 'Video',
+    totalCountries: 'Ülke',
+    totalCities: 'Şehir',
+    journeyDuration: 'Yolculuk Süresi',
+    days: 'gün',
+    topCountries: 'En Çok Video Çekilen Ülkeler',
+    continentDist: 'Kıta Dağılımı',
   },
   en: {
     worldMap: 'World Map',
@@ -432,6 +651,17 @@ const i18n = {
     routeAll: 'Route: All',
     routeLocation: 'Route: Location',
     menuTitle: 'Menu',
+    surpriseMe: 'Surprise Me',
+    allVideos: 'All videos',
+    statsTitle: 'Statistics',
+    totalDistance: 'Total Distance',
+    totalVideos: 'Videos',
+    totalCountries: 'Countries',
+    totalCities: 'Cities',
+    journeyDuration: 'Journey Duration',
+    days: 'days',
+    topCountries: 'Most Filmed Countries',
+    continentDist: 'Continent Distribution',
   }
 };
 
@@ -666,8 +896,31 @@ function renderVideoList(videos) {
   });
 }
 
-function showPopup(video) {
-  document.getElementById('popup-thumb').src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+let currentPopupVideoId = null;
+const thumbCache = {};
+
+function preloadThumb(videoId) {
+  if (!thumbCache[videoId]) {
+    const img = new Image();
+    img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+    thumbCache[videoId] = img;
+  }
+}
+
+function showPopup(video, fromTimeline) {
+  const overlay = document.getElementById('popup-overlay');
+  // Skip if same video already shown
+  if (currentPopupVideoId === video.id && overlay.classList.contains('show')) return;
+  currentPopupVideoId = video.id;
+
+  // Use cached image or set src
+  const thumbEl = document.getElementById('popup-thumb');
+  if (thumbCache[video.id]) {
+    thumbEl.src = thumbCache[video.id].src;
+  } else {
+    thumbEl.src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+  }
+
   document.getElementById('popup-title').textContent = getTitle(video);
   const locText = getLocation(video);
   const dateText = video.uploadDate ? ` · ${formatDate(video.uploadDate)}` : '';
@@ -677,15 +930,25 @@ function showPopup(video) {
   playBtn.href = video.url;
   linkBtn.href = video.url;
   linkBtn.textContent = t('watchOnYT');
-  // Disable clicks for 1s to prevent accidental double-click
-  playBtn.style.pointerEvents = 'none';
-  linkBtn.style.pointerEvents = 'none';
-  document.getElementById('popup-overlay').classList.add('show');
-  globe.controls().autoRotate = false;
-  setTimeout(() => {
+
+  if (fromTimeline) {
+    // Raise timeline above overlay so slider stays usable
+    document.getElementById('timeline-container').style.zIndex = '210';
     playBtn.style.pointerEvents = '';
     linkBtn.style.pointerEvents = '';
-  }, 1000);
+  } else {
+    document.getElementById('timeline-container').style.zIndex = '';
+    // Disable clicks for 1s to prevent accidental double-click
+    playBtn.style.pointerEvents = 'none';
+    linkBtn.style.pointerEvents = 'none';
+    setTimeout(() => {
+      playBtn.style.pointerEvents = '';
+      linkBtn.style.pointerEvents = '';
+    }, 1000);
+  }
+
+  overlay.classList.add('show');
+  globe.controls().autoRotate = false;
 }
 
 function showGroupPopup(group) {
@@ -725,6 +988,8 @@ function showGroupPopup(group) {
 }
 
 function closePopup() {
+  currentPopupVideoId = null;
+  document.getElementById('timeline-container').style.zIndex = '';
   document.getElementById('popup-overlay').classList.remove('show');
   // Restore popup HTML
   document.getElementById('popup').innerHTML = `
@@ -784,6 +1049,64 @@ function prepareJourneyData(videos) {
     .arcsTransitionDuration(500);
 
   updateArcs();
+  setupTimeline(videos);
+}
+
+let timelineDatedVideos = [];
+
+function setupTimeline(videos) {
+  timelineDatedVideos = videos
+    .filter(v => v.uploadDate)
+    .sort((a, b) => a.uploadDate.localeCompare(b.uploadDate));
+
+  const slider = document.getElementById('timeline-slider');
+  if (timelineDatedVideos.length === 0) {
+    document.getElementById('timeline-container').style.display = 'none';
+    return;
+  }
+
+  slider.max = timelineDatedVideos.length;
+  slider.value = timelineDatedVideos.length;
+
+  // Preload all timeline thumbnails
+  timelineDatedVideos.forEach(v => preloadThumb(v.id));
+
+  let isDragging = false;
+
+  slider.addEventListener('input', () => {
+    const val = parseInt(slider.value);
+
+    // Disable point animation while dragging
+    if (!isDragging) {
+      isDragging = true;
+      globe.pointsTransitionDuration(0);
+    }
+
+    if (val >= timelineDatedVideos.length) {
+      closePopup();
+      const withLoc = allVideos.filter(v => v.lat != null);
+      const base = activeCountry ? withLoc.filter(v => v.country === activeCountry) : withLoc;
+      renderVideoList(base);
+    } else {
+      const video = timelineDatedVideos[val];
+      const cutoffDate = video.uploadDate;
+      const filtered = allVideos.filter(v => v.lat != null && v.uploadDate && v.uploadDate <= cutoffDate);
+      const base = activeCountry ? filtered.filter(v => v.country === activeCountry) : filtered;
+      renderVideoList(base);
+
+      // Rotate globe and show popup on the location
+      if (video.lat != null) {
+        globe.pointOfView({ lat: video.lat, lng: video.lng }, 300);
+        showPopup(video, true);
+      }
+    }
+  });
+
+  // Restore animation when user stops dragging
+  slider.addEventListener('change', () => {
+    isDragging = false;
+    globe.pointsTransitionDuration(isMobile ? 400 : 800);
+  });
 }
 
 function updateArcs() {
@@ -868,7 +1191,7 @@ function cycleArcMode() {
 
   const btn = document.getElementById('arc-toggle');
   btn.className = `mode-${arcMode}`;
-  btn.querySelector('.arc-label').textContent = labels[arcMode];
+  btn.title = labels[arcMode];
 
   if (arcMode === 'location') {
     globe.arcsData([]); // Clear until a point is clicked
@@ -889,6 +1212,154 @@ document.getElementById('toggle-sidebar').onclick = () => {
 
 // Toggle arc mode
 document.getElementById('arc-toggle').onclick = cycleArcMode;
+
+// Surprise me
+document.getElementById('surprise-btn').onclick = surpriseMe;
+
+function surpriseMe() {
+  const withLoc = allVideos.filter(v => v.lat != null);
+  if (withLoc.length === 0) return;
+  const video = withLoc[Math.floor(Math.random() * withLoc.length)];
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.add('hidden');
+  }
+  globe.pointOfView({ lat: video.lat, lng: video.lng, altitude: 1.2 }, 1500);
+  setTimeout(() => showPopup(video), 1600);
+}
+
+// Stats panel
+document.getElementById('stats').onclick = showStats;
+
+const continentMap = {
+  'Turkey':'Europe','Germany':'Europe','France':'Europe','Italy':'Europe','Spain':'Europe','Greece':'Europe',
+  'United Kingdom':'Europe','Netherlands':'Europe','Belgium':'Europe','Switzerland':'Europe','Austria':'Europe',
+  'Portugal':'Europe','Czech Republic':'Europe','Poland':'Europe','Hungary':'Europe','Croatia':'Europe',
+  'Romania':'Europe','Bulgaria':'Europe','Serbia':'Europe','Bosnia and Herzegovina':'Europe',
+  'Montenegro':'Europe','Albania':'Europe','North Macedonia':'Europe','Kosovo':'Europe','Slovenia':'Europe',
+  'Slovakia':'Europe','Denmark':'Europe','Sweden':'Europe','Norway':'Europe','Finland':'Europe',
+  'Ireland':'Europe','Iceland':'Europe','Luxembourg':'Europe','Malta':'Europe','Cyprus':'Europe',
+  'Georgia':'Europe','Azerbaijan':'Asia','Armenia':'Europe','Ukraine':'Europe','Moldova':'Europe',
+  'Lithuania':'Europe','Latvia':'Europe','Estonia':'Europe','Monaco':'Europe',
+  'United States':'North America','Canada':'North America','Mexico':'North America',
+  'Cuba':'North America','Dominican Republic':'North America','Puerto Rico':'North America',
+  'Jamaica':'North America','Haiti':'North America','Costa Rica':'North America','Panama':'North America',
+  'Guatemala':'North America','Honduras':'North America','El Salvador':'North America','Nicaragua':'North America',
+  'Trinidad and Tobago':'North America','Bahamas':'North America','Barbados':'North America',
+  'Brazil':'South America','Argentina':'South America','Colombia':'South America','Chile':'South America',
+  'Peru':'South America','Venezuela':'South America','Ecuador':'South America','Bolivia':'South America',
+  'Uruguay':'South America','Paraguay':'South America',
+  'Japan':'Asia','China':'Asia','South Korea':'Asia','India':'Asia','Thailand':'Asia','Vietnam':'Asia',
+  'Indonesia':'Asia','Malaysia':'Asia','Philippines':'Asia','Singapore':'Asia','Cambodia':'Asia',
+  'Myanmar':'Asia','Laos':'Asia','Nepal':'Asia','Sri Lanka':'Asia','Bangladesh':'Asia',
+  'Pakistan':'Asia','Iran':'Asia','Iraq':'Asia','Saudi Arabia':'Asia','UAE':'Asia',
+  'United Arab Emirates':'Asia','Qatar':'Asia','Bahrain':'Asia','Kuwait':'Asia','Oman':'Asia',
+  'Jordan':'Asia','Lebanon':'Asia','Israel':'Asia','Palestine':'Asia','Syria':'Asia',
+  'Uzbekistan':'Asia','Kazakhstan':'Asia','Kyrgyzstan':'Asia','Tajikistan':'Asia','Turkmenistan':'Asia',
+  'Mongolia':'Asia','Taiwan':'Asia',
+  'Egypt':'Africa','Morocco':'Africa','Tunisia':'Africa','Algeria':'Africa','South Africa':'Africa',
+  'Kenya':'Africa','Nigeria':'Africa','Ghana':'Africa','Ethiopia':'Africa','Tanzania':'Africa',
+  'Senegal':'Africa','Cameroon':'Africa','Ivory Coast':'Africa','Madagascar':'Africa',
+  'Australia':'Oceania','New Zealand':'Oceania','Fiji':'Oceania',
+};
+
+function haversineDistance(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLng/2) * Math.sin(dLng/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function showStats() {
+  const withLoc = allVideos.filter(v => v.lat != null);
+  const countries = [...new Set(withLoc.map(v => v.country))];
+  const cities = [...new Set(withLoc.map(v => `${v.city},${v.country}`))];
+
+  // Total distance
+  let totalKm = 0;
+  for (let i = 0; i < journeyData.length - 1; i++) {
+    totalKm += haversineDistance(journeyData[i].lat, journeyData[i].lng, journeyData[i+1].lat, journeyData[i+1].lng);
+  }
+
+  // Journey duration
+  const dated = withLoc.filter(v => v.uploadDate).sort((a,b) => a.uploadDate.localeCompare(b.uploadDate));
+  let durationDays = 0;
+  if (dated.length >= 2) {
+    const first = new Date(dated[0].uploadDate);
+    const last = new Date(dated[dated.length-1].uploadDate);
+    durationDays = Math.round((last - first) / (1000*60*60*24));
+  }
+
+  // Top countries
+  const countryCounts = {};
+  withLoc.forEach(v => { countryCounts[v.country] = (countryCounts[v.country] || 0) + 1; });
+  const topCountries = Object.entries(countryCounts).sort((a,b) => b[1]-a[1]).slice(0, 7);
+  const maxCount = topCountries[0] ? topCountries[0][1] : 1;
+
+  // Continent distribution
+  const continentCounts = {};
+  withLoc.forEach(v => {
+    const cont = continentMap[v.country] || 'Other';
+    continentCounts[cont] = (continentCounts[cont] || 0) + 1;
+  });
+  const continents = Object.entries(continentCounts).sort((a,b) => b[1]-a[1]);
+  const maxCont = continents[0] ? continents[0][1] : 1;
+
+  const panel = document.getElementById('stats-panel');
+  panel.innerHTML = `
+    <h2>${t('statsTitle')}</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-value">${Math.round(totalKm).toLocaleString()}</div>
+        <div class="stat-label">km — ${t('totalDistance')}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${durationDays.toLocaleString()}</div>
+        <div class="stat-label">${t('days')} — ${t('journeyDuration')}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${withLoc.length}</div>
+        <div class="stat-label">${t('totalVideos')}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">${countries.length}</div>
+        <div class="stat-label">${t('totalCountries')}</div>
+      </div>
+    </div>
+    <div class="stat-section">
+      <h3>${t('topCountries')}</h3>
+      ${topCountries.map(([c, n]) => {
+        const displayName = currentLang === 'tr'
+          ? (allVideos.find(v => v.country === c && v.countryTr)?.countryTr || c)
+          : c;
+        return `<div class="stat-bar-row">
+          <span class="stat-bar-label">${displayName}</span>
+          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${(n/maxCount*100)}%;background:${countryColors[c]||'#ff4444'}"></div></div>
+          <span class="stat-bar-count">${n}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="stat-section">
+      <h3>${t('continentDist')}</h3>
+      ${continents.map(([c, n]) => {
+        const colors = {Europe:'#4dabf7',Asia:'#ffa03c','North America':'#51cf66','South America':'#cc5de8',Africa:'#ff6b6b',Oceania:'#22b8cf',Other:'#868e96'};
+        return `<div class="stat-bar-row">
+          <span class="stat-bar-label">${c}</span>
+          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${(n/maxCont*100)}%;background:${colors[c]||'#868e96'}"></div></div>
+          <span class="stat-bar-count">${n}</span>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+
+  document.getElementById('stats-overlay').classList.add('show');
+}
+
+function closeStats() {
+  document.getElementById('stats-overlay').classList.remove('show');
+}
 
 // Language toggle
 document.getElementById('lang-toggle').addEventListener('click', e => {
@@ -939,10 +1410,11 @@ function updateUIStrings(withLocation) {
   document.getElementById('search').placeholder = t('searchPlaceholder');
   document.getElementById('toggle-sidebar').title = t('menuTitle');
   const arcLabels = { off: t('routeOff'), all: t('routeAll'), location: t('routeLocation') };
-  const arcLabel = document.querySelector('.arc-label');
-  if (arcLabel) arcLabel.textContent = arcLabels[arcMode];
+  document.getElementById('arc-toggle').title = arcLabels[arcMode];
   const allTag = document.getElementById('all-tag');
   if (allTag) allTag.textContent = t('all', allVideos.filter(v => v.lat).length);
+  document.getElementById('surprise-btn').title = t('surpriseMe');
+  document.getElementById('stats-btn').title = t('statsTitle');
   document.title = `Fatih Koparan - ${t('worldMap')}`;
 }
 
