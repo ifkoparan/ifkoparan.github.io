@@ -1,0 +1,46 @@
+name: Daily Video Update
+
+on:
+  schedule:
+    - cron: '0 2,10,18 * * *'  # Günde 3 kez: 02:00, 10:00, 18:00 UTC (TR 05:00, 13:00, 21:00)
+  workflow_dispatch:  # Manuel tetikleme
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Deno (for yt-dlp JS challenge solving)
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install yt-dlp
+        run: pip install --upgrade yt-dlp
+
+      - name: Fetch new videos
+        run: node scripts/fetch-videos.js
+
+      - name: Fetch upload dates for new videos
+        run: node scripts/fetch-dates.js
+
+      - name: Geocode new videos
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: node scripts/geocode.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add raw_videos.json videos.json
+          git diff --staged --quiet || git commit -m "Update video data $(date +%Y-%m-%d)"
+          git push

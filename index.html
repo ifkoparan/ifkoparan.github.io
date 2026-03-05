@@ -1,11 +1,960 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-336XHJR8W4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-336XHJR8W4');
+  </script>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=fatih-koparan-map/">
-  <title>Yönlendiriliyor...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="1YMlv32HbYbSNvyhsGd46kYJxlrKeTZrgNz3bAh4Qwc" />
+  <title>Fatih Koparan - Dünya Haritası</title>
+  <script src="https://unpkg.com/globe.gl@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+    }
+    #globeViz { width: 100vw; height: 100vh; }
+
+    /* Header */
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    #header > * { pointer-events: auto; }
+    #header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+    #header h1 span { color: #ff4444; }
+    #stats {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      bottom: 0;
+      width: 360px;
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+    }
+    #sidebar.hidden { transform: translateX(-100%); }
+
+    #toggle-sidebar {
+      position: fixed;
+      top: 72px;
+      left: 12px;
+      z-index: 95;
+      background: rgba(30,30,40,0.9);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    #sidebar:not(.hidden) ~ #toggle-sidebar { left: 372px; }
+
+    #search-box {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #search-box input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    #search-box input:focus {
+      border-color: rgba(255,68,68,0.5);
+    }
+    #search-box input::placeholder { color: rgba(255,255,255,0.35); }
+
+    /* Country filter */
+    #country-filter {
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+    .country-tag {
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .country-tag:hover { background: rgba(255,68,68,0.2); }
+    .country-tag.active {
+      background: rgba(255,68,68,0.3);
+      border-color: #ff4444;
+    }
+
+    /* Video list */
+    #video-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+    #video-list::-webkit-scrollbar { width: 4px; }
+    #video-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+    .video-item {
+      display: flex;
+      gap: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.3s;
+    }
+    .video-item:hover { background: rgba(255,255,255,0.06); }
+    .video-item.no-click { pointer-events: none; opacity: 0.85; }
+    .video-item img {
+      width: 120px;
+      height: 68px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .video-info { flex: 1; min-width: 0; }
+    .video-info h3 {
+      font-size: 12.5px;
+      font-weight: 500;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .video-info .location-badge {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+    }
+    .video-info .date-badge {
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+
+    /* Popup */
+    #popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+    #popup-overlay.show { display: flex; }
+    #popup {
+      background: #1a1a24;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    #popup .thumb-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    #popup .thumb-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #popup .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+    #popup .play-btn:hover { background: rgba(0,0,0,0.1); }
+    #popup .play-btn svg { width: 60px; height: 60px; fill: #fff; opacity: 0.9; }
+    #popup .popup-body { padding: 16px 20px; }
+    #popup .popup-body h2 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    #popup .popup-body .popup-location {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    #popup .popup-body a {
+      display: inline-block;
+      padding: 8px 20px;
+      background: #ff4444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    #popup .popup-body a:hover { background: #e63939; }
+
+    /* Arc mode toggle */
+    #arc-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 95;
+      background: rgba(30,30,40,0.9);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      backdrop-filter: blur(10px);
+    }
+    #arc-toggle:hover { background: rgba(50,50,65,0.95); }
+    #arc-toggle .arc-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      position: relative;
+    }
+    #arc-toggle.mode-all { border-color: rgba(255,68,68,0.5); }
+    #arc-toggle.mode-all .arc-icon { border-color: #ff4444; }
+    #arc-toggle.mode-location { border-color: rgba(255,160,60,0.5); }
+    #arc-toggle.mode-location .arc-icon { border-color: #ffa03c; }
+    #arc-toggle.mode-off { opacity: 0.5; }
+
+    /* Language toggle */
+    #lang-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      font-size: 12px;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    #lang-toggle span {
+      padding: 4px 12px;
+      transition: all 0.2s;
+      color: rgba(255,255,255,0.5);
+      user-select: none;
+    }
+    #lang-toggle span.active {
+      background: rgba(255,68,68,0.3);
+      color: #fff;
+    }
+
+    /* Location group popup (multiple videos) */
+    .group-list { max-height: 300px; overflow-y: auto; }
+    .group-list .video-item { padding: 10px 16px; }
+    .group-list .video-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    @media (max-width: 768px) {
+      #header h1 { font-size: 15px; }
+      #sidebar {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 55vh;
+        border-right: none;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px 16px 0 0;
+        transform: translateX(0) translateY(0);
+        backdrop-filter: none;
+        background: rgba(10, 10, 15, 0.97);
+      }
+      #sidebar.hidden {
+        transform: translateY(100%);
+      }
+      #toggle-sidebar {
+        top: auto;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        font-size: 20px;
+        background: rgba(255,68,68,0.85);
+        border-color: rgba(255,68,68,0.4);
+        box-shadow: 0 4px 20px rgba(255,68,68,0.3);
+      }
+      #sidebar:not(.hidden) ~ #toggle-sidebar {
+        left: 50%;
+        bottom: calc(55vh + 8px);
+      }
+      #arc-toggle {
+        bottom: 12px;
+        right: 12px;
+        font-size: 11px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p><a href="fatih-koparan-map/">Fatih Koparan Map</a> sayfasına yönlendiriliyorsunuz...</p>
+
+<div id="header">
+  <h1><span>&#9679;</span> Fatih Koparan <span>|</span> <span id="header-title">Dünya Haritası</span></h1>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div id="stats"></div>
+    <div id="lang-toggle">
+      <span class="active" data-lang="tr">TR</span>
+      <span data-lang="en">EN</span>
+    </div>
+  </div>
+</div>
+
+<div id="sidebar">
+  <div id="search-box">
+    <input type="text" id="search" placeholder="Video veya ülke ara...">
+  </div>
+  <div id="country-filter"></div>
+  <div id="video-list"></div>
+</div>
+<button id="toggle-sidebar" title="Menü">&#9776;</button>
+
+<div id="globeViz"></div>
+<button id="arc-toggle" class="mode-location" title="Yolculuk rotası modu">
+  <span class="arc-icon"></span>
+  <span class="arc-label">Rota: Lokasyon</span>
+</button>
+
+<div id="popup-overlay" onclick="if(event.target===this)closePopup()">
+  <div id="popup">
+    <div class="thumb-container">
+      <img id="popup-thumb" src="" alt="">
+      <a id="popup-play" class="play-btn" href="" target="_blank">
+        <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
+      </a>
+    </div>
+    <div class="popup-body">
+      <h2 id="popup-title"></h2>
+      <div class="popup-location" id="popup-location"></div>
+      <a id="popup-link" href="" target="_blank" data-i18n="watchOnYT">YouTube'da İzle</a>
+    </div>
+  </div>
+</div>
+
+<script>
+let allVideos = [];
+let globe;
+let activeCountry = null;
+let arcMode = 'location'; // 'off', 'all', 'location'
+let journeyData = []; // sorted journey points for arc building
+const isMobile = window.innerWidth <= 768;
+let currentLang = localStorage.getItem('lang') || 'tr';
+let countryColors = {};
+let countryList = [];
+
+const i18n = {
+  tr: {
+    worldMap: 'Dünya Haritası',
+    stats: (v, c) => `${v} video  ·  ${c} ülke`,
+    searchPlaceholder: 'Video veya ülke ara...',
+    all: n => `Tümü (${n})`,
+    unknown: 'Bilinmeyen',
+    watchOnYT: "YouTube'da İzle",
+    routeOff: 'Rota: Kapalı',
+    routeAll: 'Rota: Tümü',
+    routeLocation: 'Rota: Lokasyon',
+    menuTitle: 'Menü',
+  },
+  en: {
+    worldMap: 'World Map',
+    stats: (v, c) => `${v} videos  ·  ${c} countries`,
+    searchPlaceholder: 'Search videos or countries...',
+    all: n => `All (${n})`,
+    unknown: 'Unknown',
+    watchOnYT: 'Watch on YouTube',
+    routeOff: 'Route: Off',
+    routeAll: 'Route: All',
+    routeLocation: 'Route: Location',
+    menuTitle: 'Menu',
+  }
+};
+
+function t(key, ...args) {
+  const val = i18n[currentLang][key];
+  return typeof val === 'function' ? val(...args) : val;
+}
+
+function getTitle(video) {
+  return currentLang === 'tr' ? (video.titleTr || video.titleEn || video.title || '') : (video.titleEn || video.titleTr || video.title || '');
+}
+
+function getCountry(video) {
+  return currentLang === 'tr' ? (video.countryTr || video.country || '') : (video.country || video.countryTr || '');
+}
+
+function getCity(video) {
+  return currentLang === 'tr' ? (video.cityTr || video.city || '') : (video.city || video.cityTr || '');
+}
+
+function getLocation(video) {
+  const city = getCity(video);
+  const country = getCountry(video);
+  return city ? `${city}, ${country}` : country;
+}
+
+async function init() {
+  const res = await fetch('videos.json');
+  allVideos = await res.json();
+
+  const withLocation = allVideos.filter(v => v.lat != null);
+  updateUIStrings(withLocation);
+
+  // Group videos by location (mobile: round to 0 decimal for aggressive clustering)
+  const precision = isMobile ? 0 : 1;
+  const groups = {};
+  withLocation.forEach(v => {
+    const key = `${v.lat.toFixed(precision)},${v.lng.toFixed(precision)}`;
+    if (!groups[key]) groups[key] = { lat: v.lat, lng: v.lng, country: v.country, countryTr: v.countryTr, city: v.city, cityTr: v.cityTr, videos: [] };
+    groups[key].videos.push(v);
+  });
+  const pointsData = Object.values(groups);
+
+  // Color palette by country
+  countryList = [...new Set(withLocation.map(v => v.country))].sort();
+  countryList.forEach((c, i) => {
+    const hue = (i * 137.5) % 360;
+    countryColors[c] = `hsl(${hue}, 70%, 60%)`;
+  });
+
+  // Initialize globe
+  const globeEl = document.getElementById('globeViz');
+  globe = Globe({ rendererConfig: { antialias: !isMobile } })(globeEl)
+    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+    .pointsData(pointsData)
+    .pointLat(d => d.lat)
+    .pointLng(d => d.lng)
+    .pointAltitude(d => Math.min(d.videos.length * 0.03, 0.4))
+    .pointRadius(d => 0.15 + Math.min(d.videos.length * 0.06, 0.45))
+    .pointColor(d => countryColors[d.country] || '#ff4444')
+    .pointLabel(d => {
+      const count = d.videos.length;
+      const city = currentLang === 'tr' ? (d.cityTr || d.city) : (d.city || d.cityTr);
+      const country = currentLang === 'tr' ? (d.countryTr || d.country) : (d.country || d.countryTr);
+      const loc = city ? `${city}, ${country}` : country;
+      return `<div style="font-family:system-ui;background:rgba(0,0,0,0.8);padding:6px 12px;border-radius:8px;font-size:13px;line-height:1.4">
+        <b>${loc}</b><br><span style="opacity:0.7">${count} video</span>
+      </div>`;
+    })
+    .onPointClick(d => {
+      // Show location arcs if in location mode
+      if (arcMode === 'location') {
+        showLocationArcs(d);
+      }
+      if (d.videos.length === 1) {
+        showPopup(d.videos[0]);
+      } else {
+        showGroupPopup(d);
+      }
+    })
+    .pointsMerge(false)
+    .pointsTransitionDuration(isMobile ? 400 : 800)
+    .onGlobeClick(({ lat, lng }) => {
+      // Find nearest point within threshold to make clicking easier
+      const threshold = isMobile ? 8 : 5; // degrees
+      let nearest = null;
+      let minDist = Infinity;
+      for (const p of pointsData) {
+        const dLat = p.lat - lat;
+        const dLng = p.lng - lng;
+        const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+        if (dist < minDist) {
+          minDist = dist;
+          nearest = p;
+        }
+      }
+      if (nearest && minDist < threshold) {
+        if (arcMode === 'location') showLocationArcs(nearest);
+        if (nearest.videos.length === 1) {
+          showPopup(nearest.videos[0]);
+        } else {
+          showGroupPopup(nearest);
+        }
+      }
+    });
+
+  // Mobile: lower pixel ratio for performance
+  if (isMobile) {
+    globe.renderer().setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  }
+
+  // Prepare journey data for arc modes
+  prepareJourneyData(withLocation);
+
+  // Start view on Turkey
+  globe.pointOfView({ lat: 39.9, lng: 32.8, altitude: 2.2 }, 0);
+
+  // Auto-rotate with dynamic speed based on zoom level
+  globe.controls().autoRotate = true;
+  globe.controls().autoRotateSpeed = 0.2;
+  globe.controls().enableDamping = true;
+  globe.controls().addEventListener('change', () => {
+    const alt = globe.pointOfView().altitude;
+    // Slow down as user zooms in: full speed at alt>=2, nearly stopped at alt<0.5
+    globe.controls().autoRotateSpeed = Math.min(0.2, alt * 0.1);
+  });
+
+  // Build country filter
+  buildCountryFilter();
+
+  // Build video list
+  renderVideoList(withLocation);
+
+  // Search (searches both languages)
+  document.getElementById('search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase();
+    const base = activeCountry ? withLocation.filter(v => v.country === activeCountry) : withLocation;
+    const filtered = base.filter(v =>
+      (v.titleTr && v.titleTr.toLowerCase().includes(q)) ||
+      (v.titleEn && v.titleEn.toLowerCase().includes(q)) ||
+      (v.title && v.title.toLowerCase().includes(q)) ||
+      (v.country && v.country.toLowerCase().includes(q)) ||
+      (v.countryTr && v.countryTr.toLowerCase().includes(q)) ||
+      (v.city && v.city.toLowerCase().includes(q)) ||
+      (v.cityTr && v.cityTr.toLowerCase().includes(q))
+    );
+    renderVideoList(filtered);
+  });
+}
+
+function buildCountryFilter() {
+  const container = document.getElementById('country-filter');
+  container.innerHTML = '';
+
+  // "All" tag
+  const allTag = document.createElement('span');
+  allTag.className = 'country-tag active';
+  allTag.textContent = t('all', allVideos.filter(v => v.lat).length);
+  allTag.id = 'all-tag';
+  allTag.onclick = () => {
+    activeCountry = null;
+    document.querySelectorAll('.country-tag').forEach(t => t.classList.remove('active'));
+    allTag.classList.add('active');
+    const withLoc = allVideos.filter(v => v.lat != null);
+    renderVideoList(withLoc);
+    updateGlobePoints(withLoc);
+  };
+  container.appendChild(allTag);
+
+  countryList.forEach(country => {
+    const count = allVideos.filter(v => v.country === country && v.lat).length;
+    const trName = allVideos.find(v => v.country === country && v.countryTr);
+    const displayName = currentLang === 'tr' && trName ? (trName.countryTr || country) : country;
+    const tag = document.createElement('span');
+    tag.className = 'country-tag';
+    tag.dataset.country = country;
+    tag.textContent = `${displayName} (${count})`;
+    tag.style.borderColor = countryColors[country];
+    tag.onclick = () => {
+      activeCountry = country;
+      document.querySelectorAll('.country-tag').forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+      const filtered = allVideos.filter(v => v.country === country && v.lat);
+      renderVideoList(filtered);
+      updateGlobePoints(filtered);
+      // Fly to country
+      if (filtered.length > 0) {
+        const avgLat = filtered.reduce((s, v) => s + v.lat, 0) / filtered.length;
+        const avgLng = filtered.reduce((s, v) => s + v.lng, 0) / filtered.length;
+        globe.pointOfView({ lat: avgLat, lng: avgLng, altitude: 1.5 }, 1000);
+      }
+    };
+    container.appendChild(tag);
+  });
+}
+
+function updateGlobePoints(videos) {
+  const groups = {};
+  videos.forEach(v => {
+    const key = `${v.lat.toFixed(1)},${v.lng.toFixed(1)}`;
+    if (!groups[key]) groups[key] = { lat: v.lat, lng: v.lng, country: v.country, countryTr: v.countryTr, city: v.city, cityTr: v.cityTr, videos: [] };
+    groups[key].videos.push(v);
+  });
+  globe.pointsData(Object.values(groups));
+}
+
+function renderVideoList(videos) {
+  const list = document.getElementById('video-list');
+  list.innerHTML = '';
+  videos.forEach(v => {
+    const item = document.createElement('div');
+    item.className = 'video-item';
+    item.innerHTML = `
+      <img src="${v.thumbnail}" alt="" loading="lazy">
+      <div class="video-info">
+        <h3>${escHtml(getTitle(v))}</h3>
+        <div class="location-badge">${getLocation(v) || t('unknown')}</div>
+        ${v.uploadDate ? `<div class="date-badge">${formatDate(v.uploadDate)}</div>` : ''}
+      </div>
+    `;
+    item.onclick = () => {
+      showPopup(v);
+      if (v.lat) {
+        globe.pointOfView({ lat: v.lat, lng: v.lng, altitude: 1.2 }, 1000);
+      }
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.add('hidden');
+      }
+    };
+    list.appendChild(item);
+  });
+}
+
+function showPopup(video) {
+  document.getElementById('popup-thumb').src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+  document.getElementById('popup-title').textContent = getTitle(video);
+  const locText = getLocation(video);
+  const dateText = video.uploadDate ? ` · ${formatDate(video.uploadDate)}` : '';
+  document.getElementById('popup-location').textContent = locText + dateText;
+  const playBtn = document.getElementById('popup-play');
+  const linkBtn = document.getElementById('popup-link');
+  playBtn.href = video.url;
+  linkBtn.href = video.url;
+  linkBtn.textContent = t('watchOnYT');
+  // Disable clicks for 1s to prevent accidental double-click
+  playBtn.style.pointerEvents = 'none';
+  linkBtn.style.pointerEvents = 'none';
+  document.getElementById('popup-overlay').classList.add('show');
+  globe.controls().autoRotate = false;
+  setTimeout(() => {
+    playBtn.style.pointerEvents = '';
+    linkBtn.style.pointerEvents = '';
+  }, 1000);
+}
+
+function showGroupPopup(group) {
+  const popup = document.getElementById('popup');
+  const city = currentLang === 'tr' ? (group.cityTr || group.city) : (group.city || group.cityTr);
+  const country = currentLang === 'tr' ? (group.countryTr || group.country) : (group.country || group.countryTr);
+  const loc = city ? `${city}, ${country}` : country;
+  // Sort by date, newest first
+  const sorted = [...group.videos].sort((a, b) => {
+    if (!a.uploadDate && !b.uploadDate) return 0;
+    if (!a.uploadDate) return 1;
+    if (!b.uploadDate) return -1;
+    return b.uploadDate.localeCompare(a.uploadDate);
+  });
+  popup.innerHTML = `
+    <div class="popup-body">
+      <h2>${loc} (${sorted.length} video)</h2>
+      <div class="group-list">
+        ${sorted.map(v => `
+          <div class="video-item no-click" onclick="event.stopPropagation(); if(!this.classList.contains('no-click')) window.open('${v.url}', '_blank')">
+            <img src="${v.thumbnail}" alt="" loading="lazy">
+            <div class="video-info">
+              <h3>${escHtml(getTitle(v))}</h3>
+              ${v.uploadDate ? `<div class="date-badge">${formatDate(v.uploadDate)}</div>` : ''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  document.getElementById('popup-overlay').classList.add('show');
+  globe.controls().autoRotate = false;
+  // Enable clicks after 1 second to prevent accidental double-click
+  setTimeout(() => {
+    popup.querySelectorAll('.video-item.no-click').forEach(el => el.classList.remove('no-click'));
+  }, 1000);
+}
+
+function closePopup() {
+  document.getElementById('popup-overlay').classList.remove('show');
+  // Restore popup HTML
+  document.getElementById('popup').innerHTML = `
+    <div class="thumb-container">
+      <img id="popup-thumb" src="" alt="">
+      <a id="popup-play" class="play-btn" href="" target="_blank">
+        <svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
+      </a>
+    </div>
+    <div class="popup-body">
+      <h2 id="popup-title"></h2>
+      <div class="popup-location" id="popup-location"></div>
+      <a id="popup-link" href="" target="_blank">${t('watchOnYT')}</a>
+    </div>
+  `;
+  globe.controls().autoRotate = true;
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const [y, m, d] = dateStr.split('-');
+  const monthsTr = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+  const monthsEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const months = currentLang === 'tr' ? monthsTr : monthsEn;
+  return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+}
+
+function prepareJourneyData(videos) {
+  const dated = videos
+    .filter(v => v.uploadDate && v.lat != null)
+    .sort((a, b) => a.uploadDate.localeCompare(b.uploadDate));
+
+  journeyData = [];
+  for (const v of dated) {
+    const key = `${v.lat.toFixed(1)},${v.lng.toFixed(1)}`;
+    if (journeyData.length === 0 || journeyData[journeyData.length - 1].key !== key) {
+      journeyData.push({ lat: v.lat, lng: v.lng, key, date: v.uploadDate, country: v.country, city: v.city });
+    }
+  }
+
+  // Setup arc rendering defaults
+  globe
+    .arcStartLat(d => d.startLat)
+    .arcStartLng(d => d.startLng)
+    .arcEndLat(d => d.endLat)
+    .arcEndLng(d => d.endLng)
+    .arcStroke(0.4)
+    .arcDashLength(0.5)
+    .arcDashGap(0.3)
+    .arcDashAnimateTime(2000)
+    .arcsTransitionDuration(500);
+
+  updateArcs();
+}
+
+function updateArcs() {
+  if (arcMode === 'off') {
+    globe.arcsData([]);
+    return;
+  }
+  if (arcMode === 'all') {
+    const arcs = [];
+    for (let i = 0; i < journeyData.length - 1; i++) {
+      arcs.push({
+        startLat: journeyData[i].lat,
+        startLng: journeyData[i].lng,
+        endLat: journeyData[i + 1].lat,
+        endLng: journeyData[i + 1].lng
+      });
+    }
+    globe
+      .arcColor(() => ['rgba(255,68,68,0.4)', 'rgba(255,160,60,0.4)'])
+      .arcStroke(0.3)
+      .arcsData(arcs);
+  }
+  // 'location' mode: arcs set by showLocationArcs on click
+}
+
+function showLocationArcs(clickedPoint) {
+  if (arcMode !== 'location') return;
+  const clickedKey = `${clickedPoint.lat.toFixed(1)},${clickedPoint.lng.toFixed(1)}`;
+
+  // Find all journey indices matching this location
+  const indices = [];
+  journeyData.forEach((j, i) => { if (j.key === clickedKey) indices.push(i); });
+
+  if (indices.length === 0) { globe.arcsData([]); return; }
+
+  const arcs = [];
+  for (const idx of indices) {
+    // Arc coming IN (previous → this)
+    if (idx > 0) {
+      arcs.push({
+        startLat: journeyData[idx - 1].lat,
+        startLng: journeyData[idx - 1].lng,
+        endLat: journeyData[idx].lat,
+        endLng: journeyData[idx].lng,
+        type: 'in'
+      });
+    }
+    // Arc going OUT (this → next)
+    if (idx < journeyData.length - 1) {
+      arcs.push({
+        startLat: journeyData[idx].lat,
+        startLng: journeyData[idx].lng,
+        endLat: journeyData[idx + 1].lat,
+        endLng: journeyData[idx + 1].lng,
+        type: 'out'
+      });
+    }
+  }
+
+  // Deduplicate arcs
+  const seen = new Set();
+  const unique = arcs.filter(a => {
+    const k = `${a.startLat},${a.startLng}-${a.endLat},${a.endLng}`;
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+
+  globe
+    .arcColor(d => d.type === 'in'
+      ? ['rgba(100,180,255,0.8)', 'rgba(100,180,255,0.3)']
+      : ['rgba(255,68,68,0.3)', 'rgba(255,68,68,0.8)']
+    )
+    .arcStroke(0.6)
+    .arcsData(unique);
+}
+
+function cycleArcMode() {
+  const modes = ['off', 'all', 'location'];
+  const labels = { off: t('routeOff'), all: t('routeAll'), location: t('routeLocation') };
+  arcMode = modes[(modes.indexOf(arcMode) + 1) % modes.length];
+
+  const btn = document.getElementById('arc-toggle');
+  btn.className = `mode-${arcMode}`;
+  btn.querySelector('.arc-label').textContent = labels[arcMode];
+
+  if (arcMode === 'location') {
+    globe.arcsData([]); // Clear until a point is clicked
+  } else {
+    updateArcs();
+  }
+}
+
+// Start sidebar hidden on mobile
+if (window.innerWidth <= 768) {
+  document.getElementById('sidebar').classList.add('hidden');
+}
+
+// Toggle sidebar
+document.getElementById('toggle-sidebar').onclick = () => {
+  document.getElementById('sidebar').classList.toggle('hidden');
+};
+
+// Toggle arc mode
+document.getElementById('arc-toggle').onclick = cycleArcMode;
+
+// Language toggle
+document.getElementById('lang-toggle').addEventListener('click', e => {
+  const lang = e.target.dataset.lang;
+  if (!lang || lang === currentLang) return;
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+
+  // Update toggle UI
+  document.querySelectorAll('#lang-toggle span').forEach(s =>
+    s.classList.toggle('active', s.dataset.lang === lang)
+  );
+
+  // Re-render everything
+  const withLocation = allVideos.filter(v => v.lat != null);
+  const searchQ = document.getElementById('search').value.toLowerCase();
+  let filtered = activeCountry
+    ? withLocation.filter(v => v.country === activeCountry)
+    : withLocation;
+  if (searchQ) {
+    filtered = filtered.filter(v =>
+      (v.titleTr && v.titleTr.toLowerCase().includes(searchQ)) ||
+      (v.titleEn && v.titleEn.toLowerCase().includes(searchQ)) ||
+      (v.title && v.title.toLowerCase().includes(searchQ)) ||
+      (v.country && v.country.toLowerCase().includes(searchQ)) ||
+      (v.countryTr && v.countryTr.toLowerCase().includes(searchQ)) ||
+      (v.city && v.city.toLowerCase().includes(searchQ)) ||
+      (v.cityTr && v.cityTr.toLowerCase().includes(searchQ))
+    );
+  }
+  renderVideoList(filtered);
+  buildCountryFilter();
+  // Re-select active country tag if any
+  if (activeCountry) {
+    document.querySelectorAll('.country-tag').forEach(t => {
+      if (t.dataset.country === activeCountry) t.classList.add('active');
+    });
+    document.getElementById('all-tag').classList.remove('active');
+  }
+  updateUIStrings(withLocation);
+});
+
+function updateUIStrings(withLocation) {
+  const countryCount = new Set(withLocation.map(v => v.country)).size;
+  document.getElementById('stats').textContent = t('stats', withLocation.length, countryCount);
+  document.getElementById('header-title').textContent = t('worldMap');
+  document.getElementById('search').placeholder = t('searchPlaceholder');
+  document.getElementById('toggle-sidebar').title = t('menuTitle');
+  const arcLabels = { off: t('routeOff'), all: t('routeAll'), location: t('routeLocation') };
+  const arcLabel = document.querySelector('.arc-label');
+  if (arcLabel) arcLabel.textContent = arcLabels[arcMode];
+  const allTag = document.getElementById('all-tag');
+  if (allTag) allTag.textContent = t('all', allVideos.filter(v => v.lat).length);
+  document.title = `Fatih Koparan - ${t('worldMap')}`;
+}
+
+// Apply saved language on load
+if (currentLang !== 'tr') {
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('#lang-toggle span').forEach(s =>
+    s.classList.toggle('active', s.dataset.lang === currentLang)
+  );
+}
+
+init();
+</script>
 </body>
 </html>
