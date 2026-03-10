@@ -16,7 +16,7 @@ const BATCH_SIZE = 10;
 const DELAY_MS = 3000;
 
 async function callGroq(titles) {
-  const prompt = `You are a geography expert. Given these YouTube video titles from a Turkish travel vlogger (Fatih Koparan), extract the location (country and city/region) for each video.
+  const prompt = `You are a geography and translation expert. Given these YouTube video titles from a Turkish travel vlogger (Fatih Koparan), extract the location for each video AND provide an English title when needed.
 
 Return ONLY a JSON array with objects having these fields:
 - "index": the index number from the input
@@ -26,6 +26,7 @@ Return ONLY a JSON array with objects having these fields:
 - "cityTr": city or region name in Turkish (null if not specific)
 - "lat": latitude as number
 - "lng": longitude as number
+- "titleEn": English translation of the Turkish title — ONLY provide this when [EN] and [TR] are identical (meaning no English localization exists). Translate naturally, keeping the tone and style. Return null if [EN] is already different from [TR].
 
 If a video title doesn't mention any specific location, return null for all location fields.
 If only a country is mentioned without a specific city, try to infer the city from context clues (landmarks, regions, cultural references, historical events). If you still cannot determine a city, use the capital city and set city to the capital name.
@@ -129,6 +130,7 @@ async function main() {
 
         results[video.id] = {
           ...video,
+          groqTitleEn: loc.titleEn || null,
           country: loc.country,
           countryTr: loc.countryTr || null,
           city: loc.city,
@@ -151,10 +153,23 @@ async function main() {
   // Merge with existing (keep geocoded data, add raw data for non-geocoded)
   const finalVideos = rawVideos.map(v => {
     const r = results[v.id];
+    const titleTr = v.titleTr || v.title || '';
+    const rawTitleEn = v.titleEn || '';
+    const existingEntry = existing[v.id];
+    const groqEn = r?.groqTitleEn;
+    // Priority: (1) YouTube EN if genuinely different from TR, (2) existing EN from videos.json if different from its TR,
+    // (3) Groq-generated translation, (4) fall back to TR
+    const titleEn = (rawTitleEn && rawTitleEn !== titleTr)
+      ? rawTitleEn
+      : (existingEntry?.titleEn && existingEntry.titleEn !== existingEntry.titleTr)
+        ? existingEntry.titleEn
+        : (groqEn && groqEn !== titleTr)
+          ? groqEn
+          : titleTr;
     const base = {
       id: v.id,
-      titleTr: v.titleTr || v.title || '',
-      titleEn: v.titleEn || v.title || '',
+      titleTr: titleTr,
+      titleEn: titleEn,
       url: v.url,
       thumbnail: v.thumbnail,
       uploadDate: v.uploadDate || (r && r.uploadDate) || null,
@@ -210,10 +225,40 @@ async function main() {
     }
   }
 
+  // Third pass: translate titleEn for any video still using Turkish as English title
+  const needsTranslation = finalVideos.filter(v => v.titleEn === v.titleTr);
+  if (needsTranslation.length > 0) {
+    console.log(`\nTranslating ${needsTranslation.length} videos without English titles...`);
+    for (let i = 0; i < needsTranslation.length; i += BATCH_SIZE) {
+      const batch = needsTranslation.slice(i, i + BATCH_SIZE);
+      // Pass same TR title for both so Groq knows EN is missing and will translate
+      const titles = batch.map(v => ({ tr: v.titleTr, en: v.titleTr, desc: '' }));
+      try {
+        const translations = await callGroq(titles);
+        for (const t of translations) {
+          if (!t || !t.titleEn) continue;
+          const video = batch[t.index];
+          if (!video) continue;
+          const translated = t.titleEn.trim();
+          if (!translated || translated === video.titleTr) continue;
+          const idx = finalVideos.findIndex(fv => fv.id === video.id);
+          if (idx !== -1) {
+            finalVideos[idx] = { ...finalVideos[idx], titleEn: translated };
+            console.log(`  [${video.id}] → ${translated.slice(0, 60)}`);
+          }
+        }
+      } catch (err) {
+        console.error(`Translation batch error: ${err.message}`);
+      }
+      if (i + BATCH_SIZE < needsTranslation.length) await sleep(DELAY_MS);
+    }
+  }
+
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(finalVideos, null, 2), 'utf-8');
 
   const withLocation = finalVideos.filter(v => v.lat !== null);
-  console.log(`\nDone! ${withLocation.length}/${finalVideos.length} videos have locations.`);
+  const withEnTitle = finalVideos.filter(v => v.titleEn !== v.titleTr);
+  console.log(`\nDone! ${withLocation.length}/${finalVideos.length} videos have locations, ${withEnTitle.length} have English titles.`);
   console.log(`Saved to videos.json`);
 }
 
