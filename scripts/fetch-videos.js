@@ -5,6 +5,7 @@ const path = require('path');
 
 const CHANNEL_URL = 'https://www.youtube.com/@ifkoparan/videos';
 const OUTPUT_FILE = path.join(__dirname, '..', 'raw_videos.json');
+const VIDEOS_FILE = path.join(__dirname, '..', 'videos.json');
 
 function fetchWithLang(lang) {
   console.log(`Fetching ${lang.toUpperCase()} titles...`);
@@ -29,11 +30,13 @@ function fetchWithLang(lang) {
 // Load existing data to preserve dates and English titles
 const existingDates = {};
 const existingTitleEn = {};
-if (fs.existsSync(OUTPUT_FILE)) {
-  const prev = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf-8'));
-  for (const v of prev) {
-    if (v.uploadDate) existingDates[v.id] = v.uploadDate;
-    if (v.titleEn && v.titleEn !== v.titleTr) existingTitleEn[v.id] = v.titleEn;
+for (const file of [OUTPUT_FILE, VIDEOS_FILE]) {
+  if (fs.existsSync(file)) {
+    const prev = JSON.parse(fs.readFileSync(file, 'utf-8'));
+    for (const v of prev) {
+      if (v.uploadDate && !existingDates[v.id]) existingDates[v.id] = v.uploadDate;
+      if (v.titleEn && v.titleEn !== v.titleTr && !existingTitleEn[v.id]) existingTitleEn[v.id] = v.titleEn;
+    }
   }
 }
 
