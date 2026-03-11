@@ -26,12 +26,14 @@ function fetchWithLang(lang) {
   return map;
 }
 
-// Load existing dates to preserve them
+// Load existing data to preserve dates and English titles
 const existingDates = {};
+const existingTitleEn = {};
 if (fs.existsSync(OUTPUT_FILE)) {
   const prev = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf-8'));
   for (const v of prev) {
     if (v.uploadDate) existingDates[v.id] = v.uploadDate;
+    if (v.titleEn && v.titleEn !== v.titleTr) existingTitleEn[v.id] = v.titleEn;
   }
 }
 
@@ -60,7 +62,7 @@ const videos = Object.entries(trData)
     return {
       id,
       titleTr: tr.title,
-      titleEn: en.title || tr.title,
+      titleEn: en.title || existingTitleEn[id] || tr.title,
       description: tr.description || en.description || '',
       url: `https://www.youtube.com/watch?v=${id}`,
       thumbnail: `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
