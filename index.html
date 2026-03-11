@@ -13,9 +13,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="1YMlv32HbYbSNvyhsGd46kYJxlrKeTZrgNz3bAh4Qwc" />
   <title>Fatih Koparan - Dünya Haritası</title>
-  <script src="https://unpkg.com/globe.gl@2"></script>
+  <link rel="preload" href="videos.json" as="fetch" crossorigin>
+  <script defer src="https://unpkg.com/globe.gl@2"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+    }
+    #loading-screen .loading-content {
+      text-align: center;
+    }
+    #loading-screen .loading-globe {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: #4fc3f7;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    #loading-screen h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    #loading-screen p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: #000;
@@ -555,6 +593,15 @@
 </head>
 <body>
 
+<div id="loading-screen">
+  <div class="loading-content">
+    <div class="loading-globe"></div>
+    <h2>Fatih Koparan</h2>
+    <p id="loading-text">Dünya Haritası yükleniyor...</p>
+    <script>if(localStorage.getItem('lang')==='en')document.getElementById('loading-text').textContent='Loading World Map...';</script>
+  </div>
+</div>
+
 <div id="header">
   <h1><span>&#9679;</span> Fatih Koparan <span>|</span> <span id="header-title">Dünya Haritası</span></h1>
   <div style="display:flex;align-items:center;gap:8px">
@@ -811,6 +858,13 @@ async function init() {
     );
     renderVideoList(filtered);
   });
+
+  // Hide loading screen
+  const loader = document.getElementById('loading-screen');
+  if (loader) {
+    loader.style.opacity = '0';
+    setTimeout(() => loader.remove(), 500);
+  }
 }
 
 function buildCountryFilter() {
@@ -1426,7 +1480,12 @@ if (currentLang !== 'tr') {
   );
 }
 
-init();
+// Wait for deferred globe.gl to load before initializing
+if (typeof Globe !== 'undefined') {
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', () => init());
+}
 </script>
 </body>
 </html>
