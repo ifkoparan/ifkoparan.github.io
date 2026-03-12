@@ -172,7 +172,7 @@ async function main() {
       titleEn: titleEn,
       url: v.url,
       thumbnail: v.thumbnail,
-      uploadDate: v.uploadDate || (r && r.uploadDate) || null,
+      uploadDate: v.uploadDate || (existingEntry && existingEntry.uploadDate) || (r && r.uploadDate) || null,
     };
     if (r) {
       return { ...base, country: r.country, countryTr: r.countryTr || null, city: r.city, cityTr: r.cityTr || null, lat: r.lat, lng: r.lng };
