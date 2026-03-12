@@ -1,6 +1,6 @@
 # Fatih Koparan - World Map
 
-Interactive 3D globe that visualizes **[Fatih Koparan](https://www.youtube.com/@FatihKoparan)**'s travel videos on a world map. Each video is pinned to its filming location, making it easy to explore content by geography.
+Interactive 3D globe that visualizes **[Fatih Koparan](https://www.youtube.com/@ifkoparan)**'s travel videos on a world map. Each video is pinned to its filming location, making it easy to explore content by geography.
 
 **[ifkoparan.github.io](https://ifkoparan.github.io)**
 
@@ -69,4 +69,4 @@ GROQ_API_KEY=your_key node scripts/geocode.js
 
 ## License
 
-This project is for personal/fan use. All video content belongs to [Fatih Koparan](https://www.youtube.com/@FatihKoparan).
+This project is for personal/fan use. All video content belongs to [Fatih Koparan](https://www.youtube.com/@ifkoparan).
