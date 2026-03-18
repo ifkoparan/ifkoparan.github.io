@@ -5,7 +5,7 @@ const path = require('path');
 
 const CHANNEL_ID = 'UCHut-IQXip7mtXyC3GOiQ1A';
 const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
-const RAW_FILE = path.join(__dirname, '..', 'raw_videos.json');
+const LAST_RSS_FILE = path.join(__dirname, '..', 'last_rss.json');
 
 function fetchRSS() {
   return new Promise((resolve, reject) => {
@@ -27,23 +27,35 @@ function setOutput(name, value) {
 }
 
 async function main() {
-  // Load existing video IDs
-  const existingIds = new Set();
-  if (fs.existsSync(RAW_FILE)) {
-    const videos = JSON.parse(fs.readFileSync(RAW_FILE, 'utf-8'));
-    for (const v of videos) {
-      if (v.id) existingIds.add(v.id);
-    }
+  // Load previous RSS snapshot
+  let lastRssIds = [];
+  if (fs.existsSync(LAST_RSS_FILE)) {
+    lastRssIds = JSON.parse(fs.readFileSync(LAST_RSS_FILE, 'utf-8'));
   }
-  console.log(`Existing videos: ${existingIds.size}`);
+  const lastSet = new Set(lastRssIds);
+  console.log(`Previous RSS snapshot: ${lastSet.size} videos`);
 
-  // Fetch RSS feed
+  // Fetch current RSS feed
   const xml = await fetchRSS();
   const rssIds = [...xml.matchAll(/<yt:videoId>([^<]+)<\/yt:videoId>/g)].map(m => m[1]);
-  console.log(`RSS videos: ${rssIds.length}`);
+  console.log(`Current RSS: ${rssIds.length} videos`);
 
-  // Check for new videos
-  const newIds = rssIds.filter(id => !existingIds.has(id));
+  // Save current RSS as snapshot for next run (only if changed)
+  const newContent = JSON.stringify(rssIds, null, 2) + '\n';
+  const oldContent = fs.existsSync(LAST_RSS_FILE) ? fs.readFileSync(LAST_RSS_FILE, 'utf-8') : '';
+  if (newContent !== oldContent) {
+    fs.writeFileSync(LAST_RSS_FILE, newContent, 'utf-8');
+  }
+
+  // First run: no previous snapshot, run pipeline
+  if (lastSet.size === 0) {
+    console.log('No previous snapshot, running pipeline.');
+    setOutput('new_videos', 'true');
+    return;
+  }
+
+  // Check for new videos (in current RSS but not in previous RSS)
+  const newIds = rssIds.filter(id => !lastSet.has(id));
 
   if (newIds.length > 0) {
     console.log(`New videos found: ${newIds.join(', ')}`);
