@@ -1,8 +1,8 @@
-name: Daily Video Update
+name: Video Update
 
 on:
   schedule:
-    - cron: '0 2,10,18 * * *'  # Günde 3 kez: 02:00, 10:00, 18:00 UTC (TR 05:00, 13:00, 21:00)
+    - cron: '0 * * * *'  # Her saat başı
   workflow_dispatch:  # Manuel tetikleme
 
 permissions:
@@ -18,26 +18,36 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Check for new videos (RSS)
+        id: check
+        run: node scripts/check-new-videos.js
+
       - name: Install Deno (for yt-dlp JS challenge solving)
+        if: steps.check.outputs.new_videos == 'true' || github.event_name == 'workflow_dispatch'
         uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
 
       - name: Install yt-dlp
+        if: steps.check.outputs.new_videos == 'true' || github.event_name == 'workflow_dispatch'
         run: pip install --upgrade yt-dlp
 
       - name: Fetch new videos
+        if: steps.check.outputs.new_videos == 'true' || github.event_name == 'workflow_dispatch'
         run: node scripts/fetch-videos.js
 
       - name: Fetch upload dates for new videos
+        if: steps.check.outputs.new_videos == 'true' || github.event_name == 'workflow_dispatch'
         run: node scripts/fetch-dates.js
 
       - name: Geocode new videos
+        if: steps.check.outputs.new_videos == 'true' || github.event_name == 'workflow_dispatch'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node scripts/geocode.js
 
       - name: Commit and push changes
+        if: steps.check.outputs.new_videos == 'true' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
