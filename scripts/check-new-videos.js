@@ -40,11 +40,10 @@ async function main() {
   const rssIds = [...xml.matchAll(/<yt:videoId>([^<]+)<\/yt:videoId>/g)].map(m => m[1]);
   console.log(`Current RSS: ${rssIds.length} videos`);
 
-  // Save current RSS as snapshot for next run (only if changed)
-  const newContent = JSON.stringify(rssIds, null, 2) + '\n';
-  const oldContent = fs.existsSync(LAST_RSS_FILE) ? fs.readFileSync(LAST_RSS_FILE, 'utf-8') : '';
-  if (newContent !== oldContent) {
-    fs.writeFileSync(LAST_RSS_FILE, newContent, 'utf-8');
+  // Save current RSS IDs to env for later snapshot update
+  const ghOutput = process.env.GITHUB_OUTPUT;
+  if (ghOutput) {
+    fs.appendFileSync(ghOutput, `rss_ids=${rssIds.join(',')}\n`);
   }
 
   // First run: no previous snapshot, run pipeline

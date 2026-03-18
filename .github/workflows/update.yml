@@ -46,6 +46,9 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node scripts/geocode.js
 
+      - name: Update RSS snapshot
+        run: node -e "const ids='${{ steps.check.outputs.rss_ids }}'.split(',').filter(Boolean); if(ids.length) require('fs').writeFileSync('last_rss.json', JSON.stringify(ids,null,2)+'\n')"
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
