@@ -14,8 +14,10 @@ if (!GROQ_API_KEY) {
 
 const BATCH_SIZE = 10;
 const DELAY_MS = 3000;
+const PRIMARY_MODEL = 'openai/gpt-oss-120b';
+const RETRY_MODEL = 'llama-3.3-70b-versatile';
 
-async function callGroq(titles) {
+async function callGroq(titles, model = PRIMARY_MODEL) {
   const prompt = `You are a geography and translation expert. Given these YouTube video titles from a Turkish travel vlogger (Fatih Koparan), extract the location for each video AND provide an English title when needed.
 
 Return ONLY a JSON array with objects having these fields:
@@ -36,7 +38,7 @@ Also look for country flag emojis in titles (e.g. 🇹🇼 = Taiwan, 🇨🇳 = 
 IMPORTANT: Always provide a city value - never leave city as null if a country is identified. Use the most relevant city from the title, or the capital city as fallback.
 
 Video titles (Turkish and English) with description excerpt:
-${titles.map((t, i) => `${i}: [TR] ${t.tr}\n   [EN] ${t.en}${t.desc ? '\n   [DESC] ' + t.desc.slice(0, 200) : ''}`).join('\n')}
+${titles.map((t, i) => `${i}: [TR] ${t.tr}\n   [EN] ${t.en}${t.desc ? '\n   [DESC] ' + t.desc.slice(0, 500) : ''}`).join('\n')}
 
 Return ONLY the JSON array, no markdown, no explanation.`;
 
@@ -47,7 +49,7 @@ Return ONLY the JSON array, no markdown, no explanation.`;
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      model: 'openai/gpt-oss-120b',
+      model: model,
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.1,
       max_tokens: 8192
@@ -105,8 +107,10 @@ async function main() {
     }
   }
 
-  const toGeocode = rawVideos.filter(v => !existing[v.id]);
-  console.log(`Total: ${rawVideos.length}, Already geocoded: ${Object.keys(existing).length}, New: ${toGeocode.length}`);
+  const toGeocode = rawVideos.filter(v => !existing[v.id] || existing[v.id].lat === null);
+  const brandNew = toGeocode.filter(v => !existing[v.id]).length;
+  const retryNull = toGeocode.length - brandNew;
+  console.log(`Total: ${rawVideos.length}, Already geocoded: ${Object.keys(existing).length}, New: ${brandNew}, Retry null: ${retryNull}`);
 
   if (toGeocode.length === 0) {
     console.log('All videos already geocoded.');
@@ -179,6 +183,42 @@ async function main() {
     }
     return { ...base, country: null, countryTr: null, city: null, cityTr: null, lat: null, lng: null };
   });
+
+  // Retry pass: try null-location videos with a different model
+  const stillNull = finalVideos.filter(v => v.lat === null);
+  if (stillNull.length > 0) {
+    console.log(`\nRetrying ${stillNull.length} null-location videos with ${RETRY_MODEL}...`);
+    for (let i = 0; i < stillNull.length; i += BATCH_SIZE) {
+      const batch = stillNull.slice(i, i + BATCH_SIZE);
+      const rawBatch = batch.map(v => rawVideos.find(rv => rv.id === v.id) || v);
+      const titles = rawBatch.map(v => ({ tr: v.titleTr || v.title || '', en: v.titleEn || v.title || '', desc: v.description || '' }));
+
+      try {
+        const locations = await callGroq(titles, RETRY_MODEL);
+        for (const loc of locations) {
+          if (loc == null || !loc.lat) continue;
+          const video = batch[loc.index];
+          if (!video) continue;
+          const idx = finalVideos.findIndex(fv => fv.id === video.id);
+          if (idx !== -1) {
+            finalVideos[idx] = {
+              ...finalVideos[idx],
+              country: loc.country,
+              countryTr: loc.countryTr || null,
+              city: loc.city,
+              cityTr: loc.cityTr || null,
+              lat: loc.lat,
+              lng: loc.lng
+            };
+            console.log(`  [${video.id}] ${RETRY_MODEL} → ${loc.city || loc.country}`);
+          }
+        }
+      } catch (err) {
+        console.error(`Retry batch error: ${err.message}`);
+      }
+      if (i + BATCH_SIZE < stillNull.length) await sleep(DELAY_MS);
+    }
+  }
 
   // Second pass: for videos without location, try YouTube location tag
   const noLocation = finalVideos.filter(v => v.lat === null);
