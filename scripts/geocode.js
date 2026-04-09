@@ -18,27 +18,13 @@ const PRIMARY_MODEL = 'openai/gpt-oss-120b';
 const RETRY_MODEL = 'llama-3.3-70b-versatile';
 
 async function callGroq(titles, model = PRIMARY_MODEL) {
-  const prompt = `You are a geography and translation expert. Given these YouTube video titles from a Turkish travel vlogger (Fatih Koparan), extract the location for each video AND provide an English title when needed.
+  const prompt = `Extract locations from these Turkish travel vlogger (Fatih Koparan) YouTube videos. Return ONLY a JSON array:
+[{"index":0,"country":"England","countryTr":"İngiltere","city":"London","cityTr":"Londra","lat":51.5,"lng":-0.12,"titleEn":null}]
 
-Return ONLY a JSON array with objects having these fields:
-- "index": the index number from the input
-- "country": country name in English (null if no location found)
-- "countryTr": country name in Turkish (null if no location found)
-- "city": city or region name in English (null if not specific)
-- "cityTr": city or region name in Turkish (null if not specific)
-- "lat": latitude as number
-- "lng": longitude as number
-- "titleEn": English translation of the Turkish title — ONLY provide this when [EN] and [TR] are identical (meaning no English localization exists). Translate naturally, keeping the tone and style. Return null if [EN] is already different from [TR].
+Fields: index, country (English), countryTr (Turkish), city (English), cityTr (Turkish), lat, lng, titleEn (translate TR→EN ONLY if [EN]=[TR], else null).
+Rules: Look for locations in title, description, landmarks, flag emojis. If country found but no city, use capital. null all location fields if no location found.
 
-If a video title doesn't mention any specific location, return null for all location fields.
-If only a country is mentioned without a specific city, try to infer the city from context clues (landmarks, regions, cultural references, historical events). If you still cannot determine a city, use the capital city and set city to the capital name.
-Try harder to find locations - look for country names, city names, landmarks, cultural references in BOTH the title AND the description.
-For example: 'Golden Triangle' is in Thailand/Myanmar/Laos border area, 'Breaking Bad filming locations' is Albuquerque USA, 'Barcelona' is Spain, 'Battle of Badr' is Badr/Saudi Arabia, 'Nazca Lines' is Nazca/Peru, 'Killing Fields' is Phnom Penh/Cambodia, etc.
-Also look for country flag emojis in titles (e.g. 🇹🇼 = Taiwan, 🇨🇳 = China, 🇮🇩 = Indonesia, 🇻🇳 = Vietnam, 🇨🇴 = Colombia, etc.).
-IMPORTANT: Always provide a city value - never leave city as null if a country is identified. Use the most relevant city from the title, or the capital city as fallback.
-
-Video titles (Turkish and English) with description excerpt:
-${titles.map((t, i) => `${i}: [TR] ${t.tr}\n   [EN] ${t.en}${t.desc ? '\n   [DESC] ' + t.desc.slice(0, 500) : ''}`).join('\n')}
+${titles.map((t, i) => `${i}: [TR] ${t.tr} [EN] ${t.en}${t.desc ? ' [DESC] ' + t.desc.slice(0, 500) : ''}`).join('\n')}
 
 Return ONLY the JSON array, no markdown, no explanation.`;
 
