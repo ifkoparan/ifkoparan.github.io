@@ -1,21 +1,35 @@
 [
   {
+    "id": "sffiOoQ9QXM",
+    "titleTr": "Azerbaycan'ın En Güzel Köyü Laza ve Lezgiler",
+    "titleEn": "Azerbaijan’s Switzerland: The Hidden Lezgi Village of Laza",
+    "url": "https://www.youtube.com/watch?v=sffiOoQ9QXM",
+    "thumbnail": "https://i.ytimg.com/vi/sffiOoQ9QXM/mqdefault.jpg",
+    "uploadDate": "2026-06-13",
+    "country": "Azerbaijan",
+    "countryTr": "Azerbaycan",
+    "city": "Laza",
+    "cityTr": "Laza",
+    "lat": 41.27,
+    "lng": 47.17
+  },
+  {
     "id": "lx8UE00Wi3Y",
-    "titleTr": "Hz. Nuh'un Soyundan Geldiklerine İnanıyorlar - 5.000 Yıllık Kınalık Köyü - Azerbaycan",
+    "titleTr": "Hz. Nuh'un Torunları Burada Yaşıyor - 5.000 Yıllık Kınalık Köyü",
     "titleEn": "They Claim to be Noah’s Last Descendants: The Village of Khinalug – Azerbaijan",
     "url": "https://www.youtube.com/watch?v=lx8UE00Wi3Y",
     "thumbnail": "https://i.ytimg.com/vi/lx8UE00Wi3Y/mqdefault.jpg",
     "uploadDate": "2026-06-10",
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Azerbaijan",
+    "countryTr": "Azerbaycan",
+    "city": "Khinalug",
+    "cityTr": "Kınalık",
+    "lat": 41.18,
+    "lng": 47.92
   },
   {
     "id": "RTIiGDvx8pY",
-    "titleTr": "Azerbaycan Dağ Yahudileri ve Kırmızı Kasaba - Quba 🇦🇿",
+    "titleTr": "Türkçe Konuşan Yahudiler - Kırmızı Kasaba - Azerbaycan",
     "titleEn": "The Last Jewish Town of Azerbaijan | Mountain Jews of Red Village 🇦🇿",
     "url": "https://www.youtube.com/watch?v=RTIiGDvx8pY",
     "thumbnail": "https://i.ytimg.com/vi/RTIiGDvx8pY/mqdefault.jpg",
@@ -127,7 +141,7 @@
   },
   {
     "id": "1f1x5pBAsOQ",
-    "titleTr": "F*huşun Serbest Olduğu Ülke I Dominik Cumhuriyeti 🇩🇴",
+    "titleTr": "Dominik Cumhuriyeti'nin Tehlikeli Redlight Bölgesi  🇩🇴",
     "titleEn": "THE DARK SIDE OF SANTO DOMINGO | Dominican Republic",
     "url": "https://www.youtube.com/watch?v=1f1x5pBAsOQ",
     "thumbnail": "https://i.ytimg.com/vi/1f1x5pBAsOQ/mqdefault.jpg",
@@ -323,7 +337,7 @@
   },
   {
     "id": "m24fKuxFrhY",
-    "titleTr": "Büyük Mısır Müzesi- 1 Milyar Dolar 🇪🇬",
+    "titleTr": "Büyük Mısır Müzesi- 1 Milyar Dolar Değerinde Müze - Kahire 🇪🇬",
     "titleEn": "Inside Egypt's $1 Billion Grand Egyptian Museum (GEM)",
     "url": "https://www.youtube.com/watch?v=m24fKuxFrhY",
     "thumbnail": "https://i.ytimg.com/vi/m24fKuxFrhY/mqdefault.jpg",
@@ -547,7 +561,7 @@
   },
   {
     "id": "ohjHIaY0sKQ",
-    "titleTr": "Riyad'da Yapılacak En Güzel Şey | Suudi Arabistan Gezisi 🇸🇦",
+    "titleTr": "Riyad'da Dünyanın Sonu | Suudi Arabistan Gezisi 🇸🇦",
     "titleEn": "The end of the world is in Saudi Arabia – Riyadh 🇸🇦",
     "url": "https://www.youtube.com/watch?v=ohjHIaY0sKQ",
     "thumbnail": "https://i.ytimg.com/vi/ohjHIaY0sKQ/mqdefault.jpg",
@@ -1205,7 +1219,7 @@
   },
   {
     "id": "2pAdQJVrdL0",
-    "titleTr": "Bekir Önal ve Endonezya Evlilikleri - Türk Erkekleri ve Endonezyalı Kadınlar",
+    "titleTr": "Bekir ÖNAL'la Endonezya Evlilikleri - 2.000 Kişiyi EVLENDİRDİ! Cakarta",
     "titleEn": "Married Off 2000 Turks | Turkish Men Flocking to Indonesia @bekironal",
     "url": "https://www.youtube.com/watch?v=2pAdQJVrdL0",
     "thumbnail": "https://i.ytimg.com/vi/2pAdQJVrdL0/mqdefault.jpg",
@@ -4010,12 +4024,12 @@
     "url": "https://www.youtube.com/watch?v=oOOkR-axjHY",
     "thumbnail": "https://i.ytimg.com/vi/oOOkR-axjHY/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "USA",
+    "countryTr": "ABD",
+    "city": "San Diego",
+    "cityTr": "San Diego",
+    "lat": 32.71,
+    "lng": -117.16
   },
   {
     "id": "2ijMD7pRJVI",
@@ -4038,12 +4052,12 @@
     "url": "https://www.youtube.com/watch?v=M3nQwB_z0GQ",
     "thumbnail": "https://i.ytimg.com/vi/M3nQwB_z0GQ/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "USA",
+    "countryTr": "ABD",
+    "city": "San Diego",
+    "cityTr": "San Diego",
+    "lat": 32.71,
+    "lng": -117.16
   },
   {
     "id": "gbb5y4gIkIs",
@@ -4052,12 +4066,12 @@
     "url": "https://www.youtube.com/watch?v=gbb5y4gIkIs",
     "thumbnail": "https://i.ytimg.com/vi/gbb5y4gIkIs/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "USA",
+    "countryTr": "Amerika",
+    "city": "Los Angeles",
+    "cityTr": "Los Angeles",
+    "lat": 34.05,
+    "lng": -118.24
   },
   {
     "id": "tvFIY9zO3CI",
@@ -4066,12 +4080,12 @@
     "url": "https://www.youtube.com/watch?v=tvFIY9zO3CI",
     "thumbnail": "https://i.ytimg.com/vi/tvFIY9zO3CI/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "USA",
+    "countryTr": "ABD",
+    "city": "Las Vegas",
+    "cityTr": "Las Vegas",
+    "lat": 36.17,
+    "lng": -115.14
   },
   {
     "id": "YnXse6-yGu8",
@@ -4122,12 +4136,12 @@
     "url": "https://www.youtube.com/watch?v=5UvAa3yZAC4",
     "thumbnail": "https://i.ytimg.com/vi/5UvAa3yZAC4/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mongolia",
+    "countryTr": "Moğolistan",
+    "city": "Ulan Bator",
+    "cityTr": "Ulanbator",
+    "lat": 47.92,
+    "lng": 106.92
   },
   {
     "id": "GttMuK2Q2Ho",
@@ -4136,12 +4150,12 @@
     "url": "https://www.youtube.com/watch?v=GttMuK2Q2Ho",
     "thumbnail": "https://i.ytimg.com/vi/GttMuK2Q2Ho/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mongolia",
+    "countryTr": "Moğolistan",
+    "city": "Ulan Bator",
+    "cityTr": "Ulanbator",
+    "lat": 47.92,
+    "lng": 106.92
   },
   {
     "id": "hq6oQAtg-KE",
@@ -4178,12 +4192,12 @@
     "url": "https://www.youtube.com/watch?v=SdAtxze7IsU",
     "thumbnail": "https://i.ytimg.com/vi/SdAtxze7IsU/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mongolia",
+    "countryTr": "Moğolistan",
+    "city": "Khuvsgul",
+    "cityTr": "Khuvsgul",
+    "lat": 51.43,
+    "lng": 99.83
   },
   {
     "id": "5Az9hw70Dxo",
@@ -6110,12 +6124,12 @@
     "url": "https://www.youtube.com/watch?v=WPw1quriU6o",
     "thumbnail": "https://i.ytimg.com/vi/WPw1quriU6o/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Colombia",
+    "countryTr": "Kolombiya",
+    "city": "Bogota",
+    "cityTr": "Bogota",
+    "lat": 4.61,
+    "lng": -74.08
   },
   {
     "id": "_fDkfAS16f4",
@@ -6124,12 +6138,12 @@
     "url": "https://www.youtube.com/watch?v=_fDkfAS16f4",
     "thumbnail": "https://i.ytimg.com/vi/_fDkfAS16f4/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Colombia",
+    "countryTr": "Kolombiya",
+    "city": "Bogota",
+    "cityTr": "Bogota",
+    "lat": 4.61,
+    "lng": -74.08
   },
   {
     "id": "G9Z0Krbww58",
@@ -6292,12 +6306,12 @@
     "url": "https://www.youtube.com/watch?v=PhpO3D1JKB4",
     "thumbnail": "https://i.ytimg.com/vi/PhpO3D1JKB4/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mexico",
+    "countryTr": "Meksika",
+    "city": "Palenque",
+    "cityTr": "Palenque",
+    "lat": 17.48,
+    "lng": -92.03
   },
   {
     "id": "PM5plt7JECY",
@@ -6306,12 +6320,12 @@
     "url": "https://www.youtube.com/watch?v=PM5plt7JECY",
     "thumbnail": "https://i.ytimg.com/vi/PM5plt7JECY/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mexico",
+    "countryTr": "Meksika",
+    "city": "Chiapas",
+    "cityTr": "Chiapas",
+    "lat": 16.76,
+    "lng": -92.65
   },
   {
     "id": "F-RBWpPR9jQ",
@@ -6320,12 +6334,12 @@
     "url": "https://www.youtube.com/watch?v=F-RBWpPR9jQ",
     "thumbnail": "https://i.ytimg.com/vi/F-RBWpPR9jQ/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mexico",
+    "countryTr": "Meksika",
+    "city": "Chiapas",
+    "cityTr": "Chiapas",
+    "lat": 16.76,
+    "lng": -92.65
   },
   {
     "id": "mXVqQJi1Ctk",
@@ -6334,12 +6348,12 @@
     "url": "https://www.youtube.com/watch?v=mXVqQJi1Ctk",
     "thumbnail": "https://i.ytimg.com/vi/mXVqQJi1Ctk/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mexico",
+    "countryTr": "Meksika",
+    "city": "Oaxaca",
+    "cityTr": "Oaxaca",
+    "lat": 17.07,
+    "lng": -96.72
   },
   {
     "id": "Mjb22oK0imY",
@@ -6348,12 +6362,12 @@
     "url": "https://www.youtube.com/watch?v=Mjb22oK0imY",
     "thumbnail": "https://i.ytimg.com/vi/Mjb22oK0imY/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mexico",
+    "countryTr": "Meksika",
+    "city": "Mexico City",
+    "cityTr": "Meksiko",
+    "lat": 19.43,
+    "lng": -99.14
   },
   {
     "id": "z5dC2Cd7uJ0",
@@ -6362,11 +6376,11 @@
     "url": "https://www.youtube.com/watch?v=z5dC2Cd7uJ0",
     "thumbnail": "https://i.ytimg.com/vi/z5dC2Cd7uJ0/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Spain",
+    "countryTr": "İspanya",
+    "city": "Barcelona",
+    "cityTr": "Barselona",
+    "lat": 41.39,
+    "lng": 2.16
   }
 ]
