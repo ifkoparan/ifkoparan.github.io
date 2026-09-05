@@ -1,17 +1,31 @@
 [
   {
+    "id": "OqNSaw1jUOo",
+    "titleTr": "Yeni Ülkem Kolombiya: Türküm Deyince Olanlar",
+    "titleEn": "Exploring Cartagena's Most Dangerous Market Bazurto, Colombia",
+    "url": "https://www.youtube.com/watch?v=OqNSaw1jUOo",
+    "thumbnail": "https://i.ytimg.com/vi/OqNSaw1jUOo/mqdefault.jpg",
+    "uploadDate": "2026-09-05",
+    "country": "Colombia",
+    "countryTr": "Kolombiya",
+    "city": "Cartagena",
+    "cityTr": "Cartagena",
+    "lat": 10.3997,
+    "lng": -75.5148
+  },
+  {
     "id": "aD1kG40nSxY",
-    "titleTr": "Frida Kahlo ve Azteklerin İzinde Mexico City",
-    "titleEn": "Time Travel from the Aztecs to Frida Kahlo - Mexico",
+    "titleTr": "Aztekler Neden İnsan Eti Yiyordu? Meksika Tarihi",
+    "titleEn": "Why Did the Aztecs Eat Human Flesh? History of Mexico",
     "url": "https://www.youtube.com/watch?v=aD1kG40nSxY",
     "thumbnail": "https://i.ytimg.com/vi/aD1kG40nSxY/mqdefault.jpg",
     "uploadDate": "2026-08-23",
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Mexico",
+    "countryTr": "Meksika",
+    "city": "Mexico City",
+    "cityTr": "Meksiko",
+    "lat": 19.4333,
+    "lng": -99.1333
   },
   {
     "id": "oDUC6WG2WKM",
@@ -197,7 +211,7 @@
   },
   {
     "id": "RTIiGDvx8pY",
-    "titleTr": "Azerbaycan Dağ Yahudileri ve Kırmızı Kasaba - Quba 🇦🇿",
+    "titleTr": "Türkçe Konuşan Dağ Yahudileri - Azerbaycan I Quba 🇦🇿",
     "titleEn": "The Last Jewish Town of Azerbaijan | Mountain Jews of Red Village 🇦🇿",
     "url": "https://www.youtube.com/watch?v=RTIiGDvx8pY",
     "thumbnail": "https://i.ytimg.com/vi/RTIiGDvx8pY/mqdefault.jpg",
@@ -561,7 +575,7 @@
   },
   {
     "id": "Gmui2fD1ep0",
-    "titleTr": "Hayber Kalesi: Suudi Arabistan'ın Yasak Bölgesine Girdim",
+    "titleTr": "Suudi Arabistan'ın Yasak Bölgesine Girdim! Hayber Kalesi",
     "titleEn": "The Prophet Muhammad Was Poisoned Here! The Fortress of Khaybar and the War with the Jews",
     "url": "https://www.youtube.com/watch?v=Gmui2fD1ep0",
     "thumbnail": "https://i.ytimg.com/vi/Gmui2fD1ep0/mqdefault.jpg",
@@ -589,7 +603,7 @@
   },
   {
     "id": "nH3rDrh3nBs",
-    "titleTr": "Medine'de Polise İhbar Edildim! Dövmeler Haram!",
+    "titleTr": "Dövmelerim Yüzünden Polise İhbar Edildim | Medine - Suudi Arabistan",
     "titleEn": "I was reported to the police because I have tattoos – Battle of the Trench ~ Medina 🇸🇦",
     "url": "https://www.youtube.com/watch?v=nH3rDrh3nBs",
     "thumbnail": "https://i.ytimg.com/vi/nH3rDrh3nBs/mqdefault.jpg",
@@ -617,7 +631,7 @@
   },
   {
     "id": "Dw3pDZLKS1A",
-    "titleTr": "Suudi Arabistan’da Bedir Savaşı’nın Yapıldığı Yere Gittik! 🇸🇦",
+    "titleTr": "Bedir Savaşı Burada Yapıldı - Suudi Arabistan 🇸🇦",
     "titleEn": "How 313 Men Changed History Forever! (Battle of Badr) Saudi Arabia",
     "url": "https://www.youtube.com/watch?v=Dw3pDZLKS1A",
     "thumbnail": "https://i.ytimg.com/vi/Dw3pDZLKS1A/mqdefault.jpg",
@@ -645,7 +659,7 @@
   },
   {
     "id": "46HkOO_3YYE",
-    "titleTr": "Arabayı Kim Sürüyor? Medine Cin Vadisi Gizemi",
+    "titleTr": "Fizik Kurallarına Aykırı! Medine Cin Vadisi",
     "titleEn": "Wadi-e-Jinn in Madinah | Are Jinn Driving My Car?!",
     "url": "https://www.youtube.com/watch?v=46HkOO_3YYE",
     "thumbnail": "https://i.ytimg.com/vi/46HkOO_3YYE/mqdefault.jpg",
@@ -996,7 +1010,7 @@
   {
     "id": "09mfLK3rUuA",
     "titleTr": "Çin İmparatoru'nun Gizemli Mezarı - Girmek Kesinlikle YASAK!",
-    "titleEn": "Çin İmparatoru'nun Gizemli Mezarı - Girmek Kesinlikle YASAK!",
+    "titleEn": "The Mysterious Tomb of the Chinese Emperor - Absolutely Forbidden to Enter!",
     "url": "https://www.youtube.com/watch?v=09mfLK3rUuA",
     "thumbnail": "https://i.ytimg.com/vi/09mfLK3rUuA/mqdefault.jpg",
     "uploadDate": "2025-10-10",
@@ -1079,7 +1093,7 @@
   },
   {
     "id": "e3m0M_-z3pw",
-    "titleTr": "Çin'de Bir Gece: Karabatakla Balık Avlayan Son İnsanlar",
+    "titleTr": "Çin'de Karabatakla Balık Avlayan Son İnsanlar (Yangshuo)",
     "titleEn": "Fishing with Birds in China! | Chinese Cormorant Fishermen",
     "url": "https://www.youtube.com/watch?v=e3m0M_-z3pw",
     "thumbnail": "https://i.ytimg.com/vi/e3m0M_-z3pw/mqdefault.jpg",
@@ -1135,7 +1149,7 @@
   },
   {
     "id": "RUuY-Tt39uE",
-    "titleTr": "Burada Para Geçmiyor! Shenzhen - ÇİN",
+    "titleTr": "Yeni Ülke Çin: Bu Ülkede Para Kullanılmıyor - Shenzhen",
     "titleEn": "My New Country: CHINA – No Money Is Used Here | Shenzhen ✅",
     "url": "https://www.youtube.com/watch?v=RUuY-Tt39uE",
     "thumbnail": "https://i.ytimg.com/vi/RUuY-Tt39uE/mqdefault.jpg",
@@ -1317,7 +1331,7 @@
   },
   {
     "id": "toklz5-xs6c",
-    "titleTr": "Kadın mı Erkek mi? 5 Cinsiyetli Kabilenin Sırrı - Endonezya",
+    "titleTr": "Endonezya'da 5 Cinsiyetli Kabile Bugisler - Sulawesi",
     "titleEn": "The Muslim Bugis Tribe with Five Genders – Sulawesi | Indonesia",
     "url": "https://www.youtube.com/watch?v=toklz5-xs6c",
     "thumbnail": "https://i.ytimg.com/vi/toklz5-xs6c/mqdefault.jpg",
@@ -1625,7 +1639,7 @@
   },
   {
     "id": "iNn5oHlbVsY",
-    "titleTr": "Chiang Mai'nin Gizli Gece Hayatı - Tayland",
+    "titleTr": "Gerçek Tayland Gece Hayatı Burada! (Kimse Bilmiyor)",
     "titleEn": "Chasing Thai Memories: Chiang Mai Nightlife",
     "url": "https://www.youtube.com/watch?v=iNn5oHlbVsY",
     "thumbnail": "https://i.ytimg.com/vi/iNn5oHlbVsY/mqdefault.jpg",
@@ -1695,8 +1709,8 @@
   },
   {
     "id": "pZjCWBVXQgs",
-    "titleTr": "Karen Kabilesini Ziyaret Ettim! Tayland",
-    "titleEn": "Karen Kabilesini Ziyaret Ettim! Tayland",
+    "titleTr": "Uzun Boyunlu Karen Kabilesini ZIyaret Ettim - Tayland Gezisi",
+    "titleEn": "I Visited the Long-Necked Karen Village - Thailand Trip",
     "url": "https://www.youtube.com/watch?v=pZjCWBVXQgs",
     "thumbnail": "https://i.ytimg.com/vi/pZjCWBVXQgs/mqdefault.jpg",
     "uploadDate": "2025-03-01",
@@ -1919,8 +1933,8 @@
   },
   {
     "id": "IfJkTrA5Npo",
-    "titleTr": "Evsizlerin Ülkesi Skid Row ve Lanetli Cecil Hotel - Los Angeles I Amerika",
-    "titleEn": "Land of the Homeless: Skid Row and the Cursed Cecil Hotel - Los Angeles | America",
+    "titleTr": "Amerika'da Evsizler ve Cecil Oteli - LOS ANGELES",
+    "titleEn": "Homelessness in America and the Cecil Hotel - LOS ANGELES",
     "url": "https://www.youtube.com/watch?v=IfJkTrA5Npo",
     "thumbnail": "https://i.ytimg.com/vi/IfJkTrA5Npo/mqdefault.jpg",
     "uploadDate": "2024-12-03",
@@ -2017,7 +2031,7 @@
   },
   {
     "id": "yCAEcrk7ozc",
-    "titleTr": "Korku Filmi Gibi! Kuzey Işıklarının Sesini Duydum! Norveç",
+    "titleTr": "Norveç'te Kuzey Işıkları Avı: Aurora Borealis Hakkında Her Şey",
     "titleEn": "Chasing the Northern Lights - A Must-See Before You Die ~ Arctic Circle | Norway",
     "url": "https://www.youtube.com/watch?v=yCAEcrk7ozc",
     "thumbnail": "https://i.ytimg.com/vi/yCAEcrk7ozc/mqdefault.jpg",
@@ -2059,7 +2073,7 @@
   },
   {
     "id": "mGINPtkCuiU",
-    "titleTr": "Norveç'te Yaşam Nasıl? Kuzey Kutbu'nda Issız Bir Ada",
+    "titleTr": "Kutuplarda Yaşam: Norveç'in Issız Şehirlerinde Neler Oluyor?",
     "titleEn": "The Historical Clash Between Turks and Vikings - The Mysterious History of Vardo, Norway",
     "url": "https://www.youtube.com/watch?v=mGINPtkCuiU",
     "thumbnail": "https://i.ytimg.com/vi/mGINPtkCuiU/mqdefault.jpg",
@@ -2073,7 +2087,7 @@
   },
   {
     "id": "ayPNqmDeShI",
-    "titleTr": "Kutup Dairesi'nde Yakılan Cadılar | Vardø - Norveç 🇳🇴",
+    "titleTr": "Kuzey Kutbu'nun En Karanlık Sırrı: Vardø",
     "titleEn": "The Island Where America Watches Russia | Witches Burned Alive | Vardø - Norway 🇳🇴",
     "url": "https://www.youtube.com/watch?v=ayPNqmDeShI",
     "thumbnail": "https://i.ytimg.com/vi/ayPNqmDeShI/mqdefault.jpg",
@@ -2101,7 +2115,7 @@
   },
   {
     "id": "Oij-ayOZaos",
-    "titleTr": "Balina Eti ve Kral Yengeci Yedik - Kuzey Kutbu - Norveç",
+    "titleTr": "Kutuplar'da Neler Yiyorlar? Balina Eti ve Dev Yengeç I Norveç",
     "titleEn": "Eating Whale Meat and King Crab - Arctic Circle - Norwegian Cuisine",
     "url": "https://www.youtube.com/watch?v=Oij-ayOZaos",
     "thumbnail": "https://i.ytimg.com/vi/Oij-ayOZaos/mqdefault.jpg",
@@ -2115,7 +2129,7 @@
   },
   {
     "id": "jPRi1Udt8dQ",
-    "titleTr": "Kutup Dairesi'ne Yolculuk - Norveç'teki Ailemi Ziyaret I Vardø 🇳🇴",
+    "titleTr": "Kutuplara Yolculuk I Norveçli Ailemi Ziyaret 🇳🇴",
     "titleEn": "Challenging Journey to the Arctic Circle - Kirkenes - Vardø | Norway",
     "url": "https://www.youtube.com/watch?v=jPRi1Udt8dQ",
     "thumbnail": "https://i.ytimg.com/vi/jPRi1Udt8dQ/mqdefault.jpg",
@@ -2577,8 +2591,8 @@
   },
   {
     "id": "DEwJbdwHMnM",
-    "titleTr": "Katmandu'ya Gelmeden Mutlaka İzleyin - Nepal Gezisi",
-    "titleEn": "Must Watch Before Coming to Kathmandu - Nepal Trip",
+    "titleTr": "Nepal Nasıl Bir Ülke? Katmandu Başka Bir Gezegen Gibi",
+    "titleEn": "What Kind of Country is Nepal? Kathmandu is Like Another Planet",
     "url": "https://www.youtube.com/watch?v=DEwJbdwHMnM",
     "thumbnail": "https://i.ytimg.com/vi/DEwJbdwHMnM/mqdefault.jpg",
     "uploadDate": "2024-06-25",
@@ -2605,7 +2619,7 @@
   },
   {
     "id": "gRTN9xP2PvY",
-    "titleTr": "Nepal'e Gelmeden Mutlaka İzleyin | Bakhtapur Gezisi",
+    "titleTr": "Nepal Nasıl Bir Ülke? Bakhtapur Gezisi",
     "titleEn": "Time Travel to 500 Years Ago in Nepal - Bhaktapur",
     "url": "https://www.youtube.com/watch?v=gRTN9xP2PvY",
     "thumbnail": "https://i.ytimg.com/vi/gRTN9xP2PvY/mqdefault.jpg",
@@ -3446,7 +3460,7 @@
   {
     "id": "AcYPb72UARY",
     "titleTr": "Tuol Sleng Hapishanesine Girdim | Kamboçya",
-    "titleEn": "Tuol Sleng Hapishanesine Girdim | Kamboçya",
+    "titleEn": "I Entered Tuol Sleng Prison | Cambodia",
     "url": "https://www.youtube.com/watch?v=AcYPb72UARY",
     "thumbnail": "https://i.ytimg.com/vi/AcYPb72UARY/mqdefault.jpg",
     "uploadDate": null,
@@ -3936,7 +3950,7 @@
   {
     "id": "5o5Elmgmp4I",
     "titleTr": "Amerika’da Nasıl Kalırım - Dil Okulu ile Amerika'ya gitmek - Work and Travel",
-    "titleEn": "Amerika’da Nasıl Kalırım - Dil Okulu ile Amerika'ya gitmek - Work and Travel",
+    "titleEn": "How to Stay in America - Going to America with a Language School - Work and Travel",
     "url": "https://www.youtube.com/watch?v=5o5Elmgmp4I",
     "thumbnail": "https://i.ytimg.com/vi/5o5Elmgmp4I/mqdefault.jpg",
     "uploadDate": null,
@@ -3950,7 +3964,7 @@
   {
     "id": "bf3w5-ynXho",
     "titleTr": "Japonya Köylerini Geziyoruz - Kawagoe | Tokyo",
-    "titleEn": "Japonya Köylerini Geziyoruz - Kawagoe | Tokyo",
+    "titleEn": "We Explore Japanese Villages - Kawagoe | Tokyo",
     "url": "https://www.youtube.com/watch?v=bf3w5-ynXho",
     "thumbnail": "https://i.ytimg.com/vi/bf3w5-ynXho/mqdefault.jpg",
     "uploadDate": null,
@@ -4076,7 +4090,7 @@
   {
     "id": "enztXGaNZ3g",
     "titleTr": "Melisa Vargas Korkuttu - Filenin Sultanları Arjantin Maçı - Tokyo - Japonya",
-    "titleEn": "Melisa Vargas Korkuttu - Filenin Sultanları Arjantin Maçı - Tokyo - Japonya",
+    "titleEn": "Melisa Vargas Scared - The Net's Sultans Argentina Match - Tokyo - Japan",
     "url": "https://www.youtube.com/watch?v=enztXGaNZ3g",
     "thumbnail": "https://i.ytimg.com/vi/enztXGaNZ3g/mqdefault.jpg",
     "uploadDate": null,
@@ -4090,7 +4104,7 @@
   {
     "id": "mcrhdVogkzA",
     "titleTr": "Filenin Sultanları YENİLMİYOR! Ebrar Karakurt - Vargas Şov - Tokyo - Japonya",
-    "titleEn": "Filenin Sultanları YENİLMİYOR! Ebrar Karakurt - Vargas Şov - Tokyo - Japonya",
+    "titleEn": "The Net's Sultans Won't Renew! Ebrar Karakurt - Vargas Show - Tokyo - Japan",
     "url": "https://www.youtube.com/watch?v=mcrhdVogkzA",
     "thumbnail": "https://i.ytimg.com/vi/mcrhdVogkzA/mqdefault.jpg",
     "uploadDate": null,
@@ -4132,7 +4146,7 @@
   {
     "id": "cUm2HDuMi4g",
     "titleTr": "Amerika'nın En Güzel Tren Yolculuğu | San Diego - Los Angeles",
-    "titleEn": "Amerika'nın En Güzel Tren Yolculuğu | San Diego - Los Angeles",
+    "titleEn": "America's Most Beautiful Train Journey | San Diego - Los Angeles",
     "url": "https://www.youtube.com/watch?v=cUm2HDuMi4g",
     "thumbnail": "https://i.ytimg.com/vi/cUm2HDuMi4g/mqdefault.jpg",
     "uploadDate": null,
@@ -4201,7 +4215,7 @@
   },
   {
     "id": "ShM6C5U5m4U",
-    "titleTr": "Amerika'da Asgari Ücretle Lüks Yaşam Mümkün mü? Los Angeles",
+    "titleTr": "Amerika'da Asgari Ücretle Ne Kadar Ürün Satın Aldık? İlginç Deney",
     "titleEn": "We Bought Luxury Brands for Minimum Wage in America - Los Angeles - USA",
     "url": "https://www.youtube.com/watch?v=ShM6C5U5m4U",
     "thumbnail": "https://i.ytimg.com/vi/ShM6C5U5m4U/mqdefault.jpg",
@@ -4244,7 +4258,7 @@
   {
     "id": "GttMuK2Q2Ho",
     "titleTr": "Moğol Mutfağı ve Sokak Lezzetleri - Ulan Batur Gezisi",
-    "titleEn": "Moğol Mutfağı ve Sokak Lezzetleri - Ulan Batur Gezisi",
+    "titleEn": "Mongolian Cuisine and Street Delicacies - Ulaanbaatar Trip",
     "url": "https://www.youtube.com/watch?v=GttMuK2Q2Ho",
     "thumbnail": "https://i.ytimg.com/vi/GttMuK2Q2Ho/mqdefault.jpg",
     "uploadDate": null,
@@ -4304,12 +4318,12 @@
     "url": "https://www.youtube.com/watch?v=5Az9hw70Dxo",
     "thumbnail": "https://i.ytimg.com/vi/5Az9hw70Dxo/mqdefault.jpg",
     "uploadDate": null,
-    "country": null,
-    "countryTr": null,
-    "city": null,
-    "cityTr": null,
-    "lat": null,
-    "lng": null
+    "country": "Turkey",
+    "countryTr": "Türkiye",
+    "city": "Ankara",
+    "cityTr": "Ankara",
+    "lat": 39.9334,
+    "lng": 32.8597
   },
   {
     "id": "AUS8YX1-lLI",
@@ -5069,7 +5083,7 @@
   },
   {
     "id": "mhK3C9sFDmM",
-    "titleTr": "Andorra'ya Neden Gitmemeliyiz? Andorra Gezisi",
+    "titleTr": "Andorra: Dünyanın En Sıkıcı Ülkesi",
     "titleEn": "Why Does Such a Country Exist?",
     "url": "https://www.youtube.com/watch?v=mhK3C9sFDmM",
     "thumbnail": "https://i.ytimg.com/vi/mhK3C9sFDmM/mqdefault.jpg",
@@ -5742,7 +5756,7 @@
   {
     "id": "UqGX6-yecUU",
     "titleTr": "Nice Gece Hayatı | Fransız Rivierası 🇫🇷",
-    "titleEn": "Nice Gece Hayatı | Fransız Rivierası 🇫🇷",
+    "titleEn": "Nice Nightlife | French Riviera",
     "url": "https://www.youtube.com/watch?v=UqGX6-yecUU",
     "thumbnail": "https://i.ytimg.com/vi/UqGX6-yecUU/mqdefault.jpg",
     "uploadDate": null,
@@ -5784,7 +5798,7 @@
   {
     "id": "m4xcIjJNtaA",
     "titleTr": "LIECHTENSTEIN Nasıl Bir Ülke? Gittik, Gördük",
-    "titleEn": "LIECHTENSTEIN Nasıl Bir Ülke? Gittik, Gördük",
+    "titleEn": "LIECHTENSTEIN What Kind of Country? We Went, We Saw",
     "url": "https://www.youtube.com/watch?v=m4xcIjJNtaA",
     "thumbnail": "https://i.ytimg.com/vi/m4xcIjJNtaA/mqdefault.jpg",
     "uploadDate": null,
@@ -5798,7 +5812,7 @@
   {
     "id": "YY5udigeBvM",
     "titleTr": "Moskova Gizli Gece Hayatı| Rusya Bir Başka  🇷🇺",
-    "titleEn": "Moskova Gizli Gece Hayatı| Rusya Bir Başka  🇷🇺",
+    "titleEn": "Moscow Secret Nightlife | Russia is Different",
     "url": "https://www.youtube.com/watch?v=YY5udigeBvM",
     "thumbnail": "https://i.ytimg.com/vi/YY5udigeBvM/mqdefault.jpg",
     "uploadDate": null,
@@ -5812,7 +5826,7 @@
   {
     "id": "0PJz6XcBtE4",
     "titleTr": "Ünlü Ajan Yoshi Enomoto'yla Japonya'yı Konuştuk - İstanbul",
-    "titleEn": "Ünlü Ajan Yoshi Enomoto'yla Japonya'yı Konuştuk - İstanbul",
+    "titleEn": "Famous Agent Yoshi Enomoto Talked About Japan - Istanbul",
     "url": "https://www.youtube.com/watch?v=0PJz6XcBtE4",
     "thumbnail": "https://i.ytimg.com/vi/0PJz6XcBtE4/mqdefault.jpg",
     "uploadDate": null,
@@ -5840,7 +5854,7 @@
   {
     "id": "FDAF-zqY0E8",
     "titleTr": "Kutsal Şehir - Nizwa | Umman Gezi Rehberi",
-    "titleEn": "Kutsal Şehir - Nizwa | Umman Gezi Rehberi",
+    "titleEn": "Holy City - Nizwa | Oman Travel Guide",
     "url": "https://www.youtube.com/watch?v=FDAF-zqY0E8",
     "thumbnail": "https://i.ytimg.com/vi/FDAF-zqY0E8/mqdefault.jpg",
     "uploadDate": null,
@@ -5952,7 +5966,7 @@
   {
     "id": "Quwa-Pqmu60",
     "titleTr": "Rus Kız Moskova'yı Gezdirdi | Rusya Gezisi",
-    "titleEn": "Rus Kız Moskova'yı Gezdirdi | Rusya Gezisi",
+    "titleEn": "Russian Girl Showed Around Moscow | Russia Trip",
     "url": "https://www.youtube.com/watch?v=Quwa-Pqmu60",
     "thumbnail": "https://i.ytimg.com/vi/Quwa-Pqmu60/mqdefault.jpg",
     "uploadDate": null,
@@ -6036,7 +6050,7 @@
   {
     "id": "85aOq_9Q9IM",
     "titleTr": "İNANILMAZ BİR İNKA GELENEĞİ | TAKANAKUY - PERU",
-    "titleEn": "İNANILMAZ BİR İNKA GELENEĞİ | TAKANAKUY - PERU",
+    "titleEn": "UNBELIEVABLE INCA LEGEND | TAKANAKUY - PERU",
     "url": "https://www.youtube.com/watch?v=85aOq_9Q9IM",
     "thumbnail": "https://i.ytimg.com/vi/85aOq_9Q9IM/mqdefault.jpg",
     "uploadDate": null,
@@ -6064,7 +6078,7 @@
   {
     "id": "3NOXr7x0u0E",
     "titleTr": "Peru'da Duvara Atatürk Resmi Çizdik! #29Ekim | Fatih Koparan @ Peru",
-    "titleEn": "Peru'da Duvara Atatürk Resmi Çizdik! #29Ekim | Fatih Koparan @ Peru",
+    "titleEn": "We Drew Atatürk's Portrait on a Wall in Peru! #29October | Fatih Koparan @ Peru",
     "url": "https://www.youtube.com/watch?v=3NOXr7x0u0E",
     "thumbnail": "https://i.ytimg.com/vi/3NOXr7x0u0E/mqdefault.jpg",
     "uploadDate": null,
@@ -6120,7 +6134,7 @@
   {
     "id": "_fDkfAS16f4",
     "titleTr": "Yüzyıllık Yalnızlık Romanındaki Köy: Macondo | Gabriel García Márquez - Kolombiya",
-    "titleEn": "Yüzyıllık Yalnızlık Romanındaki Köy: Macondo | Gabriel García Márquez - Kolombiya",
+    "titleEn": "The Village in One Hundred Years of Solitude: Macondo | Gabriel García Márquez - Colombia",
     "url": "https://www.youtube.com/watch?v=_fDkfAS16f4",
     "thumbnail": "https://i.ytimg.com/vi/_fDkfAS16f4/mqdefault.jpg",
     "uploadDate": null,
@@ -6134,7 +6148,7 @@
   {
     "id": "G9Z0Krbww58",
     "titleTr": "Venezuela’daki Ekonomik Kriz (Paradan Çanta Yapıyorlar) - Santa Marta",
-    "titleEn": "Venezuela’daki Ekonomik Kriz (Paradan Çanta Yapıyorlar) - Santa Marta",
+    "titleEn": "Economic Crisis in Venezuela (They Make Bags from Money) - Santa Marta",
     "url": "https://www.youtube.com/watch?v=G9Z0Krbww58",
     "thumbnail": "https://i.ytimg.com/vi/G9Z0Krbww58/mqdefault.jpg",
     "uploadDate": null,
@@ -6176,7 +6190,7 @@
   {
     "id": "ygursVMuJh8",
     "titleTr": "DÜNYANIN EN TEHLİKELİ MAHALLESİ - COMUNA 13 | MEDELLIN",
-    "titleEn": "DÜNYANIN EN TEHLİKELİ MAHALLESİ - COMUNA 13 | MEDELLIN",
+    "titleEn": "THE WORLD'S MOST DANGEROUS NEIGHBORHOOD - COMUNA 13 | MEDELLIN",
     "url": "https://www.youtube.com/watch?v=ygursVMuJh8",
     "thumbnail": "https://i.ytimg.com/vi/ygursVMuJh8/mqdefault.jpg",
     "uploadDate": null,
@@ -6218,7 +6232,7 @@
   {
     "id": "ewwfwpzphBI",
     "titleTr": "Kolombiya’da Halk Ayaklandı | Az kalsın ölüyorduk | Medellin",
-    "titleEn": "Kolombiya’da Halk Ayaklandı | Az kalsın ölüyorduk | Medellin",
+    "titleEn": "The People Revolted in Colombia | We Almost Died | Medellin",
     "url": "https://www.youtube.com/watch?v=ewwfwpzphBI",
     "thumbnail": "https://i.ytimg.com/vi/ewwfwpzphBI/mqdefault.jpg",
     "uploadDate": null,
@@ -6246,7 +6260,7 @@
   {
     "id": "5bfKNspw4iw",
     "titleTr": "Maya Yerlileri Nasıl Müslüman Oldu? Chiapas - Meksika",
-    "titleEn": "Maya Yerlileri Nasıl Müslüman Oldu? Chiapas - Meksika",
+    "titleEn": "How Did the Maya Natives Become Muslim? Chiapas - Mexico",
     "url": "https://www.youtube.com/watch?v=5bfKNspw4iw",
     "thumbnail": "https://i.ytimg.com/vi/5bfKNspw4iw/mqdefault.jpg",
     "uploadDate": null,
