@@ -1,8 +1,22 @@
 [
   {
+    "id": "hBzX42ef6qI",
+    "titleTr": "Bu Köy Volkanın İçinde - Pululahua, Ekvador",
+    "titleEn": "The People Who Live Inside a Volcano | Pululahua, Ecuador",
+    "url": "https://www.youtube.com/watch?v=hBzX42ef6qI",
+    "thumbnail": "https://i.ytimg.com/vi/hBzX42ef6qI/mqdefault.jpg",
+    "uploadDate": "2026-10-08",
+    "country": "Ecuador",
+    "countryTr": "Ekvador",
+    "city": "Pululahua",
+    "cityTr": "Pululahua",
+    "lat": -0.25,
+    "lng": -78.5
+  },
+  {
     "id": "VNkld8S_RlY",
     "titleTr": "Ekvador: Dünyanın En Ucuz Ülkesi I Her Şey 1 Dolar",
-    "titleEn": "Ecuador: The Cheapest Country in the World | Everything is 1 Dollar",
+    "titleEn": "Ecuador: The Cheapest Country in the World | Everything Costs 1 Dollar",
     "url": "https://www.youtube.com/watch?v=VNkld8S_RlY",
     "thumbnail": "https://i.ytimg.com/vi/VNkld8S_RlY/mqdefault.jpg",
     "uploadDate": "2026-10-04",
@@ -684,20 +698,6 @@
     "cityTr": "Hayber",
     "lat": 24.4533,
     "lng": 39.5467
-  },
-  {
-    "id": "Ajj6urnLwuw",
-    "titleTr": "Venezuela'da Neler Oluyor?",
-    "titleEn": "Venezuela in Crisis: Maduro! Hero or Tyrant? A Venezuelan Explains 🇻🇪",
-    "url": "https://www.youtube.com/watch?v=Ajj6urnLwuw",
-    "thumbnail": "https://i.ytimg.com/vi/Ajj6urnLwuw/mqdefault.jpg",
-    "uploadDate": "2026-01-08",
-    "country": "Venezuela",
-    "countryTr": "Venezuela",
-    "city": "Caracas",
-    "cityTr": "Karakas",
-    "lat": 7.5665,
-    "lng": -66.9036
   },
   {
     "id": "nH3rDrh3nBs",
