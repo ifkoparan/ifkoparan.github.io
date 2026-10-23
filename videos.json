@@ -1,7 +1,21 @@
 [
   {
+    "id": "VE44zm-baSs",
+    "titleTr": "Dünyanın En Yüksek Dağı? Chimborazo - Riobamba",
+    "titleEn": "Riobamba, Ecuador: Life at 2,750 m at the Foot of Chimborazo",
+    "url": "https://www.youtube.com/watch?v=VE44zm-baSs",
+    "thumbnail": "https://i.ytimg.com/vi/VE44zm-baSs/mqdefault.jpg",
+    "uploadDate": "2026-10-23",
+    "country": "Ecuador",
+    "countryTr": "Ekvador",
+    "city": "Riobamba",
+    "cityTr": "Riobamba",
+    "lat": -1.67,
+    "lng": -78.65
+  },
+  {
     "id": "pYyGANGfFh4",
-    "titleTr": "Barış Manço Deneyi Doğru Değilmiş I Gerçek Ekvator Çizgisini Bulduk",
+    "titleTr": "Ekvator Çizgisi Yalan! Gerçeğini Bulduk",
     "titleEn": "The Equator Line Is FAKE! Searching for the TRUTH in Ecuador",
     "url": "https://www.youtube.com/watch?v=pYyGANGfFh4",
     "thumbnail": "https://i.ytimg.com/vi/pYyGANGfFh4/mqdefault.jpg",
@@ -15,7 +29,7 @@
   },
   {
     "id": "OI-mSrMyr4s",
-    "titleTr": "Ekvador'da Pazarcı Oldum! Quito Sokaklarında Bir Gün",
+    "titleTr": "Ekvador'da Sokaklara Asker İnmiş - Quito",
     "titleEn": "Is Ecuador Dangerous? | Quito Vlog",
     "url": "https://www.youtube.com/watch?v=OI-mSrMyr4s",
     "thumbnail": "https://i.ytimg.com/vi/OI-mSrMyr4s/mqdefault.jpg",
@@ -4397,7 +4411,7 @@
   },
   {
     "id": "hq6oQAtg-KE",
-    "titleTr": "Moğolistan'da Şaman Ayinine Katıldık - Şok Edici Deneyim",
+    "titleTr": "Türk Şaman (Kam) Ayini - Moğolistan 🇲🇳",
     "titleEn": "I Attended a Trance Shaman (Kam) Ritual - Mongolia",
     "url": "https://www.youtube.com/watch?v=hq6oQAtg-KE",
     "thumbnail": "https://i.ytimg.com/vi/hq6oQAtg-KE/mqdefault.jpg",
@@ -6466,5 +6480,19 @@
     "cityTr": "Meksiko",
     "lat": 19.43,
     "lng": -99.14
+  },
+  {
+    "id": "z5dC2Cd7uJ0",
+    "titleTr": "Ferrari'yle İstanbul'dan Barcelona'ya Gittik I Dünyada İlk",
+    "titleEn": "4000 KM from Istanbul to Barcelona in 4 Days with Ferrari",
+    "url": "https://www.youtube.com/watch?v=z5dC2Cd7uJ0",
+    "thumbnail": "https://i.ytimg.com/vi/z5dC2Cd7uJ0/mqdefault.jpg",
+    "uploadDate": null,
+    "country": "Turkey",
+    "countryTr": "Türkiye",
+    "city": "Istanbul",
+    "cityTr": "İstanbul",
+    "lat": 41.0082,
+    "lng": 28.9784
   }
 ]
