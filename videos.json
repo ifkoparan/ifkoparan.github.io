@@ -1,7 +1,21 @@
 [
   {
+    "id": "vukRhLo6xlA",
+    "titleTr": "Gördüğüm En Güzel Şehir - Ucuz ve Vizesiz",
+    "titleEn": "They Ate “Christ’s Knee” and Drank Rose Water in Ecuador 😳",
+    "url": "https://www.youtube.com/watch?v=vukRhLo6xlA",
+    "thumbnail": "https://i.ytimg.com/vi/vukRhLo6xlA/mqdefault.jpg",
+    "uploadDate": "2026-11-08",
+    "country": "Ecuador",
+    "countryTr": "Ekvador",
+    "city": "Quito",
+    "cityTr": "Quito",
+    "lat": -0.1807,
+    "lng": -78.4678
+  },
+  {
     "id": "hs6TYP0qXjY",
-    "titleTr": "Yıkıntıların Altından Mumya Çıktı! Ekvador'da Akıl Almaz Olay",
+    "titleTr": "Tüm Şehiri Yutan 8.3 Şiddetindeki Deprem! Ekvador",
     "titleEn": "Ecuador’s First Church, a Hidden Mummy & Guinea Pig for Lunch 🇪🇨",
     "url": "https://www.youtube.com/watch?v=hs6TYP0qXjY",
     "thumbnail": "https://i.ytimg.com/vi/hs6TYP0qXjY/mqdefault.jpg",
@@ -15,7 +29,7 @@
   },
   {
     "id": "EXMYxIAPBM0",
-    "titleTr": "And Dağları'nda Bir Yerli Pazarı - Vizesiz ve Ucuz",
+    "titleTr": "Her Şeyin 1 Dolar Olduğu Ülke - Hayvan Pazarı",
     "titleEn": "Inside Ecuador’s Craziest Animal Market – Guamote",
     "url": "https://www.youtube.com/watch?v=EXMYxIAPBM0",
     "thumbnail": "https://i.ytimg.com/vi/EXMYxIAPBM0/mqdefault.jpg",
@@ -141,7 +155,7 @@
   },
   {
     "id": "f9v0JLYdCC0",
-    "titleTr": "Bogota Nasıl Bir Şehir | Kolombiya Gezisi - 콜롬비아 여행",
+    "titleTr": "Bogota Nasıl Bir Şehir | Kolombiya Gezisi",
     "titleEn": "Searching for El Dorado in Colombia! Bogotá Gold Museum 🇨🇴",
     "url": "https://www.youtube.com/watch?v=f9v0JLYdCC0",
     "thumbnail": "https://i.ytimg.com/vi/f9v0JLYdCC0/mqdefault.jpg",
@@ -2045,7 +2059,7 @@
   },
   {
     "id": "IPDrWJ82GhA",
-    "titleTr": "Escobar'ın Hapishanesi ve Mezarı | Medellin Gece Hayatı - Kolombiya",
+    "titleTr": "Escobar'ın Hapishanesi | Medellin - Kolombiya",
     "titleEn": "Escobar's Prison and Grave | Medellin Nightlife - Colombia",
     "url": "https://www.youtube.com/watch?v=IPDrWJ82GhA",
     "thumbnail": "https://i.ytimg.com/vi/IPDrWJ82GhA/mqdefault.jpg",
@@ -4453,7 +4467,7 @@
   },
   {
     "id": "hq6oQAtg-KE",
-    "titleTr": "Kam Davulu ve Şaman Ayini - Moğolistan 🇲🇳",
+    "titleTr": "Kam Davulu ve Türk Şaman Ayini - Moğolistan 🇲🇳",
     "titleEn": "I Attended a Trance Shaman (Kam) Ritual - Mongolia",
     "url": "https://www.youtube.com/watch?v=hq6oQAtg-KE",
     "thumbnail": "https://i.ytimg.com/vi/hq6oQAtg-KE/mqdefault.jpg",
@@ -4800,6 +4814,20 @@
     "cityTr": "Palmira",
     "lat": 34.5833,
     "lng": 38.2833
+  },
+  {
+    "id": "VUFrkIgI-vw",
+    "titleTr": "Humus Şehri Yıkılmış, Harabeye Dönmüş - Suriye Gezisi",
+    "titleEn": "The Terrible Destruction of the Syrian War - Homs - Syria",
+    "url": "https://www.youtube.com/watch?v=VUFrkIgI-vw",
+    "thumbnail": "https://i.ytimg.com/vi/VUFrkIgI-vw/mqdefault.jpg",
+    "uploadDate": null,
+    "country": "Syria",
+    "countryTr": "Suriye",
+    "city": "Homs",
+    "cityTr": "Homs",
+    "lat": 34.7268,
+    "lng": 36.7225
   },
   {
     "id": "tMnldi4ahRg",
