@@ -1,7 +1,21 @@
 [
   {
+    "id": "v5O9w8C_1kc",
+    "titleTr": "Dünyanın En Ucuz Ülkesi: And Dağları Köy Hayatı",
+    "titleEn": "Beautiful Villages and Towns Around Cuenca, Ecuador",
+    "url": "https://www.youtube.com/watch?v=v5O9w8C_1kc",
+    "thumbnail": "https://i.ytimg.com/vi/v5O9w8C_1kc/mqdefault.jpg",
+    "uploadDate": "2026-11-15",
+    "country": "Ecuador",
+    "countryTr": "Ekvador",
+    "city": "Cuenca",
+    "cityTr": "Cuenca",
+    "lat": -2.9,
+    "lng": -78.99
+  },
+  {
     "id": "vukRhLo6xlA",
-    "titleTr": "Gördüğüm En Güzel Şehir - Ucuz ve Vizesiz",
+    "titleTr": "Gördüğüm En Güzel Şehir - Ucuz ve Vizesiz I Cuenca, Ekvador",
     "titleEn": "They Ate “Christ’s Knee” and Drank Rose Water in Ecuador 😳",
     "url": "https://www.youtube.com/watch?v=vukRhLo6xlA",
     "thumbnail": "https://i.ytimg.com/vi/vukRhLo6xlA/mqdefault.jpg",
@@ -980,6 +994,20 @@
     "lng": -106.6474
   },
   {
+    "id": "RkhXHCPjdPA",
+    "titleTr": "Teksas'ta Yaşam: Dallas Sokakları ve Meşgur Texas BBQ",
+    "titleEn": "Bekir Arrived! We Bought a Company in Dallas. Texas | USA 🇺🇸",
+    "url": "https://www.youtube.com/watch?v=RkhXHCPjdPA",
+    "thumbnail": "https://i.ytimg.com/vi/RkhXHCPjdPA/mqdefault.jpg",
+    "uploadDate": null,
+    "country": "United States",
+    "countryTr": "ABD",
+    "city": "Dallas",
+    "cityTr": "Dallas",
+    "lat": 32.7767,
+    "lng": -96.797
+  },
+  {
     "id": "iid-NeRt8Ho",
     "titleTr": "DÜNYANIN MERKEZİ NEW YORK! 🗽 | Amerika'da Yaşam ve Eğitim Rehberi 🇺🇸",
     "titleEn": "I’ve Arrived in New York! We Talked About Living and Studying in America 🇺🇸",
@@ -1289,7 +1317,7 @@
   },
   {
     "id": "e3m0M_-z3pw",
-    "titleTr": "Çin'de Karabatakla Balık Avlayan Son İnsanlar (Yangshuo)",
+    "titleTr": "Çin'de Köy Hayatı - Karabatakla Balık Avlayan Son İnsanlar (Yangshuo)",
     "titleEn": "Fishing with Birds in China! | Chinese Cormorant Fishermen",
     "url": "https://www.youtube.com/watch?v=e3m0M_-z3pw",
     "thumbnail": "https://i.ytimg.com/vi/e3m0M_-z3pw/mqdefault.jpg",
@@ -2381,8 +2409,8 @@
   },
   {
     "id": "KHnLOU-tCEM",
-    "titleTr": "Cevad Prekazi'yi Belgrad'da Buldum - Sırbistan Gezisi",
-    "titleEn": "I found Cevad Prekazi in Belgrade - A trip to Serbia",
+    "titleTr": "Prekazi'yi Belgrad'da Buldum - Sırbistan Gezisi",
+    "titleEn": "I Found Prekazi in Belgrade - Serbia Trip",
     "url": "https://www.youtube.com/watch?v=KHnLOU-tCEM",
     "thumbnail": "https://i.ytimg.com/vi/KHnLOU-tCEM/mqdefault.jpg",
     "uploadDate": "2024-10-05",
@@ -3064,6 +3092,20 @@
     "cityTr": "Mirissa",
     "lat": 5.9483,
     "lng": 80.4639
+  },
+  {
+    "id": "-PnmZ4tcTT8",
+    "titleTr": "Sri Lanka Nasıl Bir Ülke? | Kolombo Vlog",
+    "titleEn": "Visiting a New Country: Sri Lanka! Crazy Casino!",
+    "url": "https://www.youtube.com/watch?v=-PnmZ4tcTT8",
+    "thumbnail": "https://i.ytimg.com/vi/-PnmZ4tcTT8/mqdefault.jpg",
+    "uploadDate": null,
+    "country": "Sri Lanka",
+    "countryTr": "Sri Lanka",
+    "city": "Colombo",
+    "cityTr": "Kolombo",
+    "lat": 6.9271,
+    "lng": 79.8612
   },
   {
     "id": "4qCnQqvQRcM",
