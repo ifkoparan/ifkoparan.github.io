@@ -1,5 +1,19 @@
 [
   {
+    "id": "xH2stnIZbRA",
+    "titleTr": "Amazon'un En Korkulan Kabilesine Girdik!",
+    "titleEn": "Inside the Amazon Tribe That Shrank Their Enemies' Heads",
+    "url": "https://www.youtube.com/watch?v=xH2stnIZbRA",
+    "thumbnail": "https://i.ytimg.com/vi/xH2stnIZbRA/mqdefault.jpg",
+    "uploadDate": "2026-11-22",
+    "country": null,
+    "countryTr": null,
+    "city": null,
+    "cityTr": null,
+    "lat": null,
+    "lng": null
+  },
+  {
     "id": "v5O9w8C_1kc",
     "titleTr": "Dünyanın En Ucuz Ülkesi: And Dağları Köy Hayatı",
     "titleEn": "Beautiful Villages and Towns Around Cuenca, Ecuador",
@@ -810,6 +824,20 @@
     "cityTr": "Hayber",
     "lat": 24.4533,
     "lng": 39.5467
+  },
+  {
+    "id": "Ajj6urnLwuw",
+    "titleTr": "Venezuela'da Neler Oluyor?",
+    "titleEn": "Venezuela in Crisis: Maduro! Hero or Tyrant? A Venezuelan Explains 🇻🇪",
+    "url": "https://www.youtube.com/watch?v=Ajj6urnLwuw",
+    "thumbnail": "https://i.ytimg.com/vi/Ajj6urnLwuw/mqdefault.jpg",
+    "uploadDate": null,
+    "country": "Venezuela",
+    "countryTr": "Venezuela",
+    "city": "Caracas",
+    "cityTr": "Caracas",
+    "lat": 10.4806,
+    "lng": -66.9036
   },
   {
     "id": "nH3rDrh3nBs",
@@ -6340,6 +6368,20 @@
     "cityTr": "Lima",
     "lat": -12.05,
     "lng": -77.05
+  },
+  {
+    "id": "L25Tv_thg48",
+    "titleTr": "Kolombiyalı Webcam İşçileri Nasıl Çalışıyor  Cheeseburger Jesus | Medellin",
+    "titleEn": "How Do Colombian Webcam Workers Work? #1 (Documentary)",
+    "url": "https://www.youtube.com/watch?v=L25Tv_thg48",
+    "thumbnail": "https://i.ytimg.com/vi/L25Tv_thg48/mqdefault.jpg",
+    "uploadDate": null,
+    "country": "Colombia",
+    "countryTr": "Kolombiya",
+    "city": "Medellín",
+    "cityTr": "Medellín",
+    "lat": 6.2442,
+    "lng": -75.5812
   },
   {
     "id": "CJnat30hDak",
